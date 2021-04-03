@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { Container } from "./container";
+import React, { useEffect, useState } from 'react';
+import { BoxOfficeItem, Title } from '../types';
+import { Movie } from './movie';
 
-const App = () => {
-
+export const MovieContainer = (props: BoxOfficeItem) => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
-        var url = `https://www.uploadr.co.uk/imdbfetch/public/outputs/boxOffice10.json`;
+        var url = `https://www.uploadr.co.uk/imdbfetch/public/outputs/${props.id}.json`;
         var req = new Request(url);
         fetch(req)
         .then((response) => response.json())
@@ -20,9 +19,10 @@ const App = () => {
             }
         })
         .catch((e) => console.error(e));
-    }, [])
+    }, [props.id])
         
-    return <Container movies={response} />;
-};
-
-ReactDOM.render(<App />, document.getElementById("root"));
+    return <Movie
+        movie={response}
+        {...props}
+    />
+}
