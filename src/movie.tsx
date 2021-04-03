@@ -6,7 +6,6 @@ import "./movie.scss";
 
 export const Movie = (props: BoxOfficeItem) => {
     const movie: Title = require(`./stubs/${props.id}.json`);
-    console.log(movie);
     return (
         <>
             <div
@@ -14,39 +13,76 @@ export const Movie = (props: BoxOfficeItem) => {
                 style={{ backgroundImage: `url(${movie.image})` }}
             />
             <div className={"container"}>
+                <h2>{movie.title}</h2>
                 <div className="horizontal">
-                    <h2>{movie.title}</h2>
-                    {movie.fullTitle && <p>&nbsp;{` - ${movie.fullTitle}`}</p>}
-                    {movie.originalTitle && (
-                        <p>&nbsp;{` - ${movie.originalTitle}`}</p>
-                    )}
+                {movie.fullTitle && <p>{movie.fullTitle}</p>}
+                {movie.originalTitle && <p>{`-(${movie.originalTitle})`}</p>}
                 </div>
                 <div className={"imageAndInfo"}>
-                    <img src={props.image} />
+                    <a
+                        href={`https://www.imdb.com/find?q=${getActorImdbLink(
+                            movie.title
+                        )}&ref_=nv_sr_sm`}
+                    >
+                        <img className="movieImage" src={movie.image} onError={(e: any) => e.target.src = props.image}/>
+                    </a>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Rank</td>
-                                <td>:</td>
                                 <td>{props.rank}</td>
                             </tr>
                             <tr>
-                                <td>Weekend</td>
-                                <td>:</td>
+                                <td>Release Date</td>
+                                <td>{formatDate(movie.releaseDate)}</td>
+                            </tr>
+                            <tr>
+                                <td>Weeks in Box Office</td>
+                                <td>{props.weeks}</td>
+                            </tr>
+                            <tr>
+                                <td>Opening Weekend</td>
                                 <td>{props.weekend}</td>
                             </tr>
                             <tr>
-                                <td>Weeks</td>
-                                <td>:</td>
-                                <td>{props.weeks}</td>
+                                <td>Genre</td>
+                                <td>{movie.genres}</td>
+                            </tr>
+                            <tr>
+                                <td>IMDb Rating</td>
+                                <td>
+                                    {movie.imDbRating
+                                        ? `${movie.imDbRating}/10`
+                                        : "Not Yet Rated"}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MetaCritic Rating</td>
+                                <td>
+                                    {movie.metacriticRating
+                                        ? `${movie.metacriticRating}/100`
+                                        : "Not Yet Rated"}
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p>{movie.plot}</p>
+                <p className="plot">{movie.plot}</p>
                 <div className="trailer">
-                {movie.trailer && <video src={movie.trailer} />}
-                {!movie.trailer && <p>No trailer? Try clicking <a href={`https://www.youtube.com/results?search_query=${getActorImdbLink(movie.title)}+trailer`}>here</a> to search on YouTube!</p>}
+                    {movie.trailer && <video src={movie.trailer} />}
+                    {!movie.trailer && (
+                        <p>
+                            No trailer? Try clicking{" "}
+                            <a
+                                href={`https://www.youtube.com/results?search_query=${getActorImdbLink(
+                                    movie.title
+                                )}+trailer`}
+                            >
+                                here
+                            </a>{" "}
+                            to search on YouTube!
+                        </p>
+                    )}
                 </div>
                 {movie.actorList && (
                     <div className="actorList">
@@ -67,3 +103,14 @@ export const Movie = (props: BoxOfficeItem) => {
         </>
     );
 };
+
+export function formatDate(input: string): string {
+    const date: Date = new Date(input);
+    const toLocale = date.toLocaleDateString();
+    return toLocale;
+}
+
+export function getFullSizeImg(input: string): string {
+    const cutString = input.split('@')[0];
+    return `${cutString}@.jpg`
+}

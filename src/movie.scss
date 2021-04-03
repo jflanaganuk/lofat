@@ -1,5 +1,17 @@
 .container {
     position: relative;
+    h2,
+    p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+.movieImage {
+    width: 90vw;
+    @media only screen and (min-width: 750px) {
+        width: 300px;
+    }
 }
 
 .subContainer {
@@ -31,9 +43,22 @@
 
 .imageAndInfo {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    table {
+        font-weight: bold;
+        td:nth-child(2) {
+            text-align: right;
+            font-weight: initial;
+            width: 200px;
+        }
+    }
     @media only screen and (min-width: 750px) {
         justify-content: flex-start;
+        flex-direction: initial;
+        table {
+            margin-left: 15px;
+        }
     }
 }
 
@@ -42,6 +67,10 @@
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    border-top: 1px solid white;
+    @media only screen and (min-width: 750px) {
+        border-top: none;
+    }
 }
 
 .trailer {
@@ -50,4 +79,9 @@
         right: 0;
         top: 0;
     }
+}
+
+.plot {
+    padding: 15px 0;
+    border-bottom: 1px solid white;
 }
