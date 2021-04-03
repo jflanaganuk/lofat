@@ -1,8 +1,8 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
-import { BoxOffice, BoxOfficeItem, EnvType, Title } from './types';
+import { BoxOffice, BoxOfficeItem, EnvType, Title } from '../types';
 
-const env: EnvType = require('./env.json');
+const env: EnvType = require('../env.json');
 const { key } = env;
 
 setInterval(() => {
