@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+}
+
+.subContainer {
+    z-index: -1;
+
+    filter: blur(10px);
+    opacity: 0.5;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.horizontal {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    * {
+        margin: 0;
+    }
+    margin: 10px 0;
+}
+
+.imageAndInfo {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (min-width: 750px) {
+        justify-content: flex-start;
+    }
+}

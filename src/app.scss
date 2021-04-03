@@ -1,0 +1,26 @@
+html body {
+    background-color: black;
+    color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main {
+    padding: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999;
+    button {
+        padding: 10px 20px;
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+        margin: 0 5px;
+    }
+}
