@@ -4,3 +4,4 @@ index.js
 types.js
 public/outputs/**/*
 bundle.js
+bundle.js.map

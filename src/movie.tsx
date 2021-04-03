@@ -4,27 +4,33 @@ import { Actor, getActorImdbLink } from "./actor";
 
 import "./movie.scss";
 
-export const Movie = (props: BoxOfficeItem) => {
-    const movie: Title = require(`./stubs/${props.id}.json`);
+export const Movie = (props: BoxOfficeItem & {movie: Title | null}) => {
+    if (!props.movie) return null;
     return (
         <>
             <div
                 className={"subContainer"}
-                style={{ backgroundImage: `url(${movie.image})` }}
+                style={{ backgroundImage: `url(${props.movie.image})` }}
             />
             <div className={"container"}>
-                <h2>{movie.title}</h2>
+                <h2>{props.movie.title}</h2>
                 <div className="horizontal">
-                {movie.fullTitle && <p>{movie.fullTitle}</p>}
-                {movie.originalTitle && <p>{`-(${movie.originalTitle})`}</p>}
+                    {props.movie.fullTitle && <p>{props.movie.fullTitle}</p>}
+                    {props.movie.originalTitle && (
+                        <p>{`-(${props.movie.originalTitle})`}</p>
+                    )}
                 </div>
                 <div className={"imageAndInfo"}>
                     <a
                         href={`https://www.imdb.com/find?q=${getActorImdbLink(
-                            movie.title
+                            props.movie.title
                         )}&ref_=nv_sr_sm`}
                     >
-                        <img className="movieImage" src={movie.image} onError={(e: any) => e.target.src = props.image}/>
+                        <img
+                            className="movieImage"
+                            src={props.movie.image}
+                            onError={(e: any) => (e.target.src = props.image)}
+                        />
                     </a>
                     <table>
                         <tbody>
@@ -34,7 +40,7 @@ export const Movie = (props: BoxOfficeItem) => {
                             </tr>
                             <tr>
                                 <td>Release Date</td>
-                                <td>{formatDate(movie.releaseDate)}</td>
+                                <td>{formatDate(props.movie.releaseDate)}</td>
                             </tr>
                             <tr>
                                 <td>Weeks in Box Office</td>
@@ -46,36 +52,36 @@ export const Movie = (props: BoxOfficeItem) => {
                             </tr>
                             <tr>
                                 <td>Genre</td>
-                                <td>{movie.genres}</td>
+                                <td>{props.movie.genres}</td>
                             </tr>
                             <tr>
                                 <td>IMDb Rating</td>
                                 <td>
-                                    {movie.imDbRating
-                                        ? `${movie.imDbRating}/10`
+                                    {props.movie.imDbRating
+                                        ? `${props.movie.imDbRating}/10`
                                         : "Not Yet Rated"}
                                 </td>
                             </tr>
                             <tr>
                                 <td>MetaCritic Rating</td>
                                 <td>
-                                    {movie.metacriticRating
-                                        ? `${movie.metacriticRating}/100`
+                                    {props.movie.metacriticRating
+                                        ? `${props.movie.metacriticRating}/100`
                                         : "Not Yet Rated"}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p className="plot">{movie.plot}</p>
+                <p className="plot">{props.movie.plot}</p>
                 <div className="trailer">
-                    {movie.trailer && <video src={movie.trailer} />}
-                    {!movie.trailer && (
+                    {props.movie.trailer && <video src={props.movie.trailer} />}
+                    {!props.movie.trailer && (
                         <p>
                             No trailer? Try clicking{" "}
                             <a
                                 href={`https://www.youtube.com/results?search_query=${getActorImdbLink(
-                                    movie.title
+                                    props.movie.title
                                 )}+trailer`}
                             >
                                 here
@@ -84,9 +90,9 @@ export const Movie = (props: BoxOfficeItem) => {
                         </p>
                     )}
                 </div>
-                {movie.actorList && (
+                {props.movie.actorList && (
                     <div className="actorList">
-                        {movie.actorList.map((actor) => {
+                        {props.movie.actorList.map((actor) => {
                             return (
                                 <Actor
                                     name={actor.name}
@@ -111,6 +117,6 @@ export function formatDate(input: string): string {
 }
 
 export function getFullSizeImg(input: string): string {
-    const cutString = input.split('@')[0];
-    return `${cutString}@.jpg`
+    const cutString = input.split("@")[0];
+    return `${cutString}@.jpg`;
 }
