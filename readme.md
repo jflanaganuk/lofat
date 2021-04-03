@@ -12,5 +12,5 @@
 
 # React Development
 
-7. Copy the current `.json` files into `src/stubs`
+7. Copy the current `.json` (from step 5) files into `src/stubs`
 8. Run `npm run watch` to start local development
