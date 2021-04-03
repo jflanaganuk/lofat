@@ -23,7 +23,7 @@ export type NameWithId = {
     name: string;
 }
 
-export type Actor = {
+export type ActorType = {
     id: string;
     image: string;
     name: string;
@@ -69,7 +69,7 @@ export type Title = {
     writerList: NameWithId[];
     stars: string;
     starList: NameWithId[];
-    actorList: Actor[];
+    actorList: ActorType[];
     fullCast: string;
     genres: string;
     genreList: KeyValue[];

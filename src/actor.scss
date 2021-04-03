@@ -1,0 +1,23 @@
+.actorContainer {
+    margin: 20px;
+    width: 200px;
+    height: 300px;
+    h2, p {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.actorImage {
+    height: auto;
+    width: 100%;
+}
+
+.actorImageCircle {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: black;
+}
