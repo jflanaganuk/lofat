@@ -4,7 +4,7 @@ import { Actor, getActorImdbLink } from "./actor";
 
 import "./movie.scss";
 
-export const Movie = (props: BoxOfficeItem & {movie: Title | null}) => {
+export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
     if (!props.movie) return null;
     return (
         <>
@@ -25,6 +25,7 @@ export const Movie = (props: BoxOfficeItem & {movie: Title | null}) => {
                         href={`https://www.imdb.com/find?q=${getActorImdbLink(
                             props.movie.title
                         )}&ref_=nv_sr_sm`}
+                        target="_blank"
                     >
                         <img
                             className="movieImage"
@@ -83,6 +84,7 @@ export const Movie = (props: BoxOfficeItem & {movie: Title | null}) => {
                                 href={`https://www.youtube.com/results?search_query=${getActorImdbLink(
                                     props.movie.title
                                 )}+trailer`}
+                                target="_blank"
                             >
                                 here
                             </a>{" "}

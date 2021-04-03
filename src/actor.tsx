@@ -11,6 +11,7 @@ export const Actor = (props: ActorType) => {
                 href={`https://www.imdb.com/find?q=${getActorImdbLink(
                     props.name
                 )}&ref_=nv_sr_sm`}
+                target="_blank"
             >
                 <div className="actorImageCircle">
                     <img className="actorImage" src={props.image} />

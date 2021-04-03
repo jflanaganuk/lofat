@@ -10,7 +10,7 @@ import { MovieContainer } from "./movieContainer";
 // } = require("./stubs/boxOffice10.json");
 
 type ContainerProps = {
-    movies: {items: BoxOfficeItem[]} | null;
+    movies: { items: BoxOfficeItem[] } | null;
 };
 
 export const Container = (props: ContainerProps) => {
