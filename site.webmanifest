@@ -24,8 +24,8 @@
         "type": "image/png"
     }
   ],
-  "start_url": "/imdbfetch/",
+  "start_url": "/imdbfetch/index.html",
   "display": "standalone",
   "theme_color": "#fff",
-  "background_color": "#e3ac3c"
+  "background_color": "#000"
 }
