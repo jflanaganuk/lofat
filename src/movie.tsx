@@ -11,7 +11,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
         <>
             <div
                 className={"subContainer"}
-                style={{ backgroundImage: `url(${props.movie.image})` }}
+                style={{ backgroundImage: `url(${props.image})` }}
             />
             <div className={"container"}>
                 <h2>{props.movie.title}</h2>
@@ -27,11 +27,15 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                             props.movie.title
                         )}&ref_=nv_sr_sm`}
                         target="_blank"
+                        rel="noopener"
                     >
                         <img
                             className="movieImage"
-                            src={props.movie.image}
-                            onError={(e: any) => (e.target.src = props.image)}
+                            src={props.image}
+                            alt={`image of ${props.movie.title} poster`}
+                            onLoad={(e: any) => {
+                                e.target.src = props.movie?.image || props.image
+                            }}
                         />
                     </a>
                     <table>
@@ -76,15 +80,13 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     </table>
                 </div>
                 <p className="plot">{props.movie.plot}</p>
-                {/* @ts-ignore */}
-                {window.debug && (
-                    <a
-                        href={`http://192.168.0.28:38083/add/new?term=${props.movie.title}`}
-                        target="_blank"
-                    >
-                        <button>Click to add to radarr</button>
-                    </a>
-                )}
+                <a
+                    href={`http://192.168.0.28:38083/add/new?term=${props.movie.title}`}
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <button className="add">+</button>
+                </a>
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
                     <div className="actorList">

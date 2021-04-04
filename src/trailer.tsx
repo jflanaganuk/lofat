@@ -18,6 +18,7 @@ export const Trailer = (props: { trailer: TrailerProps | null }) => {
                         className="trailerLink"
                         href={props.trailer.link}
                         target="_blank"
+                        rel="noopener"
                     >
                         <button>View Trailer</button>
                     </a>
@@ -31,6 +32,7 @@ export const Trailer = (props: { trailer: TrailerProps | null }) => {
                             props.trailer.title
                         )}+trailer`}
                         target="_blank"
+                        rel="noopener"
                     >
                         here
                     </a>{" "}

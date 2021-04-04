@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The latest 10 box office films, including synopsis, trailers and stars! Updated every week and installable onto your PWA compatible device!">
+    <link rel="manifest" href="manifest.json" />
+    <title>Latest Box Office Movies</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="public/bundle.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+</html>

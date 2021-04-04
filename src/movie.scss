@@ -80,3 +80,20 @@
     padding: 15px 0;
     border-bottom: 1px solid white;
 }
+
+.add {
+    border: none;
+    position: fixed;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 50%;
+    bottom: 10px;
+    left: 10px;
+    font-size: 2rem;
+    &:hover {
+        cursor: pointer;
+        background-color: lightgreen;
+    }
+}
