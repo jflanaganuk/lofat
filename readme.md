@@ -1,9 +1,14 @@
 # IMDb Fetcher
 ## Fetches the 10 highest box office films with trailers and info
 ### Installable as a PWA
+<a href="https://www.uploadr.co.uk/imdbfetch/" target="_blank" rel="noopener">
+Click for a live example!
+</a>
+<br>
+<br>
 
-<img src="./images/desktop.png" height="300"/>
-<img src="./images/mobile.png" height="300"/>
+<img src="./images/desktop.png" height="200"/>
+<img src="./images/mobile.png" height="200"/>
 
 ## Development steps
 
