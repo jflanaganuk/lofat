@@ -1,7 +1,7 @@
 {
   "short_name": "IMDb Fetcher",
   "name": "IMDb Fetcher - See The Latest Box Office Hits!",
-  "orientation": "portrait",
+  "orientation": "any",
   "icons": [
     {
       "src": "icon-small-144x144.png",
