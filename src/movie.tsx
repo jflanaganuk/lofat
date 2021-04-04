@@ -1,6 +1,7 @@
 import React from "react";
 import { BoxOfficeItem, Title } from "../types";
-import { Actor, getActorImdbLink } from "./actor";
+import { getActorImdbLink } from "./actor";
+import { ActorList } from "./actorList";
 
 import "./movie.scss";
 import { TrailerContainer } from "./trailerContainer";
@@ -34,7 +35,8 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                             src={props.image}
                             alt={`image of ${props.movie.title} poster`}
                             onLoad={(e: any) => {
-                                e.target.src = props.movie?.image || props.image
+                                e.target.src =
+                                    props.movie?.image || props.image;
                             }}
                         />
                     </a>
@@ -89,19 +91,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 </a>
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
-                    <div className="actorList">
-                        {props.movie.actorList.map((actor) => {
-                            return (
-                                <Actor
-                                    name={actor.name}
-                                    id={actor.id}
-                                    image={actor.image}
-                                    asCharacter={actor.asCharacter}
-                                    key={actor.id}
-                                />
-                            );
-                        })}
-                    </div>
+                    <ActorList actorList={props.movie.actorList} />
                 )}
             </div>
         </>

@@ -67,9 +67,9 @@
 
 .actorList {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-wrap: wrap;
+    overflow-y: hidden;
     border-top: 1px solid white;
     @media only screen and (min-width: 750px) {
         border-top: none;
@@ -92,6 +92,7 @@
     bottom: 10px;
     left: 10px;
     font-size: 2rem;
+    z-index: 9999;
     &:hover {
         cursor: pointer;
         background-color: lightgreen;
