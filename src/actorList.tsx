@@ -18,21 +18,19 @@ export const ActorList = (props: { actorList: ActorType[] }) => {
         setCurrentActor(0);
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
-        })
+            behavior: "smooth",
+        });
         // @ts-ignore
         actorRef.current?.scrollTo({
             left: 0,
             behavior: "smooth",
         });
-    }, [props.actorList])
+    }, [props.actorList]);
     const actorAmount = props.actorList.length;
     const actorWidth = 240;
     const actorMultiplier = 3;
     const lowerBound = 0;
-    const upperBound =
-        actorAmount -
-        window.visualViewport.width / actorWidth;
+    const upperBound = actorAmount - window.visualViewport.width / actorWidth;
     return (
         <div className="actorListContainer">
             {currentActor > lowerBound && (

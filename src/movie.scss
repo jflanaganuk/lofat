@@ -73,6 +73,9 @@
     border-top: 1px solid white;
     @media only screen and (min-width: 750px) {
         border-top: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }
 

@@ -18,15 +18,14 @@ export const Actor = (props: ActorType) => {
                 target="_blank"
                 rel="noopener"
             >
-                <div className="actorImageCircle">
-                    <img
-                        className="actorImage"
-                        src={
+                <div
+                    className="actorImageCircle"
+                    style={{
+                        backgroundImage: `url(${
                             props.image !== noImgUrl ? props.image : fallbackUrl
-                        }
-                        alt={`image of ${props.name} who plays ${props.asCharacter} in the film`}
-                    />
-                </div>
+                        })`,
+                    }}
+                ></div>
             </a>
             <p>{props.name ? props.name : "Unknown"}</p>
         </div>
