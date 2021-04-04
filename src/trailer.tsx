@@ -6,7 +6,6 @@ import "./trailer.scss";
 
 export const Trailer = (props: { trailer: TrailerProps | null }) => {
     if (!props.trailer) return null;
-    console.log(props);
     return (
         <div className="trailer">
             {props.trailer.linkEmbed && (
