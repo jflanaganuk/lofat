@@ -4,6 +4,7 @@ import { getActorImdbLink } from "./actor";
 import { ActorList } from "./actorList";
 
 import "./movie.scss";
+import { RadarrIntegration } from "./radarrIntegration";
 import { TrailerContainer } from "./trailerContainer";
 
 export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
@@ -82,13 +83,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     </table>
                 </div>
                 <p className="plot">{props.movie.plot}</p>
-                <a
-                    href={`http://192.168.0.28:38083/add/new?term=${props.movie.title}`}
-                    target="_blank"
-                    rel="noopener"
-                >
-                    <button className="add">+</button>
-                </a>
+                <RadarrIntegration />
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
                     <ActorList actorList={props.movie.actorList} />

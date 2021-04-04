@@ -10,6 +10,10 @@ Click for a live example!
 <img src="./images/desktop.png" height="200"/>
 <img src="./images/mobile.png" height="200"/>
 
+### Current Lighthouse Scores (mobile - incognito)
+
+<img src="./images/currentScore.png" height="200"/>
+
 ## Development steps
 
 ### Start IMDB Fetcher
