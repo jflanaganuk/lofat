@@ -1,0 +1,35 @@
+.trailer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    justify-self: flex-end;
+    @media only screen and (min-width: 1800px) {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.trailerFrame {
+    display: none;
+    border: none;
+    width: 860px;
+    height: 500px;
+    html {
+        overflow: hidden;
+    }
+    @media only screen and (min-width: 900px) {
+        display: initial;
+    }
+}
+
+.trailerLink {
+    display: initial;
+    button {
+        padding: 20px 40px;
+    }
+    @media only screen and (min-width: 900px) {
+        display: none;
+    }
+}

@@ -3,6 +3,7 @@ import { BoxOfficeItem, Title } from "../types";
 import { Actor, getActorImdbLink } from "./actor";
 
 import "./movie.scss";
+import { TrailerContainer } from "./trailerContainer";
 
 export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
     if (!props.movie) return null;
@@ -75,23 +76,16 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     </table>
                 </div>
                 <p className="plot">{props.movie.plot}</p>
-                <div className="trailer">
-                    {props.movie.trailer && <video src={props.movie.trailer} />}
-                    {!props.movie.trailer && (
-                        <p>
-                            No trailer? Try clicking{" "}
-                            <a
-                                href={`https://www.youtube.com/results?search_query=${getActorImdbLink(
-                                    props.movie.title
-                                )}+trailer`}
-                                target="_blank"
-                            >
-                                here
-                            </a>{" "}
-                            to search on YouTube!
-                        </p>
-                    )}
-                </div>
+                {/* @ts-ignore */}
+                {window.debug && (
+                    <a
+                        href={`http://192.168.0.28:38083/add/new?term=${props.movie.title}`}
+                        target="_blank"
+                    >
+                        <button>Click to add to radarr</button>
+                    </a>
+                )}
+                <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
                     <div className="actorList">
                         {props.movie.actorList.map((actor) => {
