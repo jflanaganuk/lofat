@@ -70,7 +70,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: hidden;
-    border-top: 1px solid white;
+    border-top: 1px solid #ecf0f1;
     @media only screen and (min-width: 750px) {
         border-top: none;
         &::-webkit-scrollbar {
@@ -81,23 +81,5 @@
 
 .plot {
     padding: 15px 0;
-    border-bottom: 1px solid white;
-}
-
-.add {
-    border: none;
-    position: fixed;
-    color: white;
-    width: 50px;
-    height: 50px;
-    background-color: green;
-    border-radius: 50%;
-    bottom: 10px;
-    left: 10px;
-    font-size: 2rem;
-    z-index: 9999;
-    &:hover {
-        cursor: pointer;
-        background-color: lightgreen;
-    }
+    border-bottom: 1px solid #ecf0f1;
 }

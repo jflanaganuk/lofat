@@ -1,6 +1,6 @@
 html body {
-    background-color: black;
-    color: white;
+    background-color: #2c3e50;
+    color: #ecf0f1;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,9 +18,9 @@ html body {
     z-index: 999;
     button {
         padding: 10px 20px;
-        border: 1px solid white;
-        background-color: black;
-        color: white;
+        border: 1px solid #ecf0f1;
+        background-color: #2c3e50;
+        color: #ecf0f1;
         margin: 0 5px;
     }
 }

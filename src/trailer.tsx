@@ -13,7 +13,6 @@ export const Trailer = (props: { trailer: TrailerProps | null }) => {
                     className="trailerFrame"
                     src={`https://www.imdb.com/videoembed/${props.trailer.videoId}`}
                     allowFullScreen
-                    allowTransparency
                 />
             )}
             {!props.trailer.linkEmbed && (

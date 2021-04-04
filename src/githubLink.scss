@@ -1,0 +1,22 @@
+.githubContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #3498db;
+    color: #ecf0f1;
+    font-size: 1.25rem;
+    padding: 10px;
+    border-radius: 0 0 0 20px;
+    a {
+        color: #ecf0f1;
+        font-weight: bold;
+    }
+    * {
+        margin: 0;
+        text-decoration: none;
+    }
+    @media only screen and (min-width: 1800px) {
+        display: initial;
+    }
+}

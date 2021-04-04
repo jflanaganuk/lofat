@@ -83,7 +83,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     </table>
                 </div>
                 <p className="plot">{props.movie.plot}</p>
-                <RadarrIntegration />
+                <RadarrIntegration movie={props.movie} />
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
                     <ActorList actorList={props.movie.actorList} />

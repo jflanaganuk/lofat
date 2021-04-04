@@ -4,10 +4,7 @@ import { BoxOfficeItem } from "../types";
 import "./imports.scss";
 import "./app.scss";
 import { MovieContainer } from "./movieContainer";
-
-// const stubbedBoxOffice10: {
-//     items: BoxOfficeItem[];
-// } = require("./stubs/boxOffice10.json");
+import { GithubLink } from "./githubLink";
 
 type ContainerProps = {
     movies: { items: BoxOfficeItem[] } | null;
@@ -50,6 +47,7 @@ export const Container = (props: ContainerProps) => {
                 weekend={item.weekend}
                 weeks={item.weeks}
             />
+            <GithubLink />
         </div>
     );
 };
