@@ -25,7 +25,9 @@ export const Actor = (props: ActorType) => {
                             props.image !== noImgUrl ? props.image : fallbackUrl
                         })`,
                     }}
-                ></div>
+                >
+                    {props.name}
+                </div>
             </a>
             <p>{props.name ? props.name : "Unknown"}</p>
         </div>

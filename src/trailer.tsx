@@ -10,6 +10,7 @@ export const Trailer = (props: { trailer: TrailerProps | null }) => {
         <div className="trailer">
             {props.trailer.linkEmbed && (
                 <iframe
+                    title={`Trailer for ${props.trailer.title} film`}
                     className="trailerFrame"
                     src={`https://www.imdb.com/videoembed/${props.trailer.videoId}`}
                     allowFullScreen

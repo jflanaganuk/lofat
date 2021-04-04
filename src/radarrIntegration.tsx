@@ -25,8 +25,12 @@ const RadarrSetup = (props) => {
     const [shown, setShown] = useState(false);
     return (
         <>
-            <button className="setup" onClick={() => setShown(!shown)}>
-                <img src={wrench} />
+            <button
+                className="setup"
+                onClick={() => setShown(!shown)}
+                aria-label="setup radarr icon"
+            >
+                <img src={wrench} alt="wrench icon" />
             </button>
             {shown && <RadarrForm setShown={setShown} />}
         </>
