@@ -33,7 +33,6 @@ export const ActorList = (props: { actorList: ActorType[] }) => {
     const upperBound =
         actorAmount -
         window.visualViewport.width / actorWidth;
-    console.log(currentActor, lowerBound, upperBound);
     return (
         <div className="actorListContainer">
             {currentActor > lowerBound && (

@@ -1,0 +1,31 @@
+{
+  "short_name": "IMDb Fetcher",
+  "name": "IMDb Fetcher - See The Latest Box Office Hits!",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-small-144x144.png",
+      "sizes": "144x144",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/x-icon"
+    },
+    {
+        "src": "android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+    {
+        "src": "android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }
+  ],
+  "start_url": "/imdbfetch/",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#e3ac3c"
+}
