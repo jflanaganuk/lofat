@@ -1,7 +1,6 @@
 - Add a way to configure your own radarr integration (localstorage)
-- convert trailers to use something like plyr
-- dont load the trailer on mobile view (it can play in the background)
 - fix actor scroll with left and right buttons (it can desync from the normal scroll behaviour on touch devices)
 - add a router and load the film using url params so it keeps it's place
 - handle missing images better
 - look into other lighthouse suggestions
+- fix the iframe scrollbar on some trailers

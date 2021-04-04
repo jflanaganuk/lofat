@@ -12,24 +12,15 @@
 }
 
 .trailerFrame {
-    display: none;
     border: none;
-    width: 860px;
-    height: 500px;
+    width: 320px;
+    height: 200px;
+    overflow: hidden;
     html {
         overflow: hidden;
     }
     @media only screen and (min-width: 900px) {
-        display: initial;
-    }
-}
-
-.trailerLink {
-    display: initial;
-    button {
-        padding: 20px 40px;
-    }
-    @media only screen and (min-width: 900px) {
-        display: none;
+        width: 860px;
+        height: 500px;
     }
 }

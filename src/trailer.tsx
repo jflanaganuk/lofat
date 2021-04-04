@@ -6,23 +6,16 @@ import "./trailer.scss";
 
 export const Trailer = (props: { trailer: TrailerProps | null }) => {
     if (!props.trailer) return null;
+    console.log(props);
     return (
         <div className="trailer">
             {props.trailer.linkEmbed && (
-                <>
-                    <iframe
-                        className="trailerFrame"
-                        src={props.trailer.linkEmbed}
-                    />
-                    <a
-                        className="trailerLink"
-                        href={props.trailer.link}
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <button>View Trailer</button>
-                    </a>
-                </>
+                <iframe
+                    className="trailerFrame"
+                    src={`https://www.imdb.com/videoembed/${props.trailer.videoId}`}
+                    allowFullScreen
+                    allowTransparency
+                />
             )}
             {!props.trailer.linkEmbed && (
                 <p>
