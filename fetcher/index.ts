@@ -56,7 +56,7 @@ const fetchFilm = (item: BoxOfficeItem) => {
 
 const fetchTrailer = (id: string) => {
     const url = new URL(
-        `https://imdb-api.com/en/API/Trailer/${key}/${id}`,
+        `https://imdb-api.com/en/API/YouTubeTrailer/${key}/${id}`,
         'https://localhost'
     )
     fetch(url)

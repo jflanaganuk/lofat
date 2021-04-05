@@ -1,22 +1,22 @@
 import React from "react";
-import { Trailer as TrailerProps } from "../types";
+import { YouTubeTrailer } from "../types";
 import { getActorImdbLink } from "./actor";
 
 import "./trailer.scss";
 
-export const Trailer = (props: { trailer: TrailerProps | null }) => {
+export const Trailer = (props: { trailer: YouTubeTrailer | null }) => {
     if (!props.trailer) return null;
     return (
         <div className="trailer">
-            {props.trailer.linkEmbed && (
+            {props.trailer.videoId && (
                 <iframe
                     title={`Trailer for ${props.trailer.title} film`}
                     className="trailerFrame"
-                    src={`https://www.imdb.com/videoembed/${props.trailer.videoId}`}
+                    src={`https://www.youtube.com/embed/${props.trailer.videoId}`}
                     allowFullScreen
                 />
             )}
-            {!props.trailer.linkEmbed && (
+            {!props.trailer.videoId && (
                 <p>
                     No trailer? Try clicking{" "}
                     <a

@@ -118,3 +118,14 @@ export type Trailer = {
     linkEmbed: string;
     errorMessage: string;
 }
+
+export type YouTubeTrailer = {
+    imDbId: string;
+    title: string;
+    fullTitle: string;
+    type: string;
+    year: string;
+    videoId: string;
+    videoUrl: string;
+    errorMessage: string;
+}
