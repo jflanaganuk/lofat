@@ -11,7 +11,6 @@ const fallbackUrl =
 export const Actor = (props: ActorType) => {
     return (
         <div className="actorContainer">
-            <h3>{props.name ? props.name : "Unknown"}</h3>
             <a
                 href={`https://www.imdb.com/name/${props.id}`}
                 target="_blank"
@@ -22,14 +21,17 @@ export const Actor = (props: ActorType) => {
                     style={{
                         backgroundImage: `url(${
                             props.image !== noImgUrl
-                                ? convertAWSImage(props.image, 200)
+                                ? convertAWSImage(props.image, 128)
                                 : fallbackUrl
-                        })`,
+                        }), url(
+                            ${convertAWSImage(props.image, 10)}
+                        )`,
                     }}
                 >
                     {props.name}
                 </div>
             </a>
+            <b>{props.name ? props.name : "Unknown"}</b>
             <p>{props.asCharacter ? props.asCharacter : "Unnamed"}</p>
         </div>
     );

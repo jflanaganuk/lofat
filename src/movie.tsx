@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { BoxOfficeItem, Title } from "../types";
+import { ImageOpti } from "./imageOpti";
 
 import "./movie.scss";
 import { RadarrIntegration } from "./radarrIntegration";
@@ -14,10 +15,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
             <div
                 className={"subContainer"}
                 style={{
-                    backgroundImage: `url(${convertAWSImage(
-                        props.movie.image,
-                        500
-                    )})`,
+                    backgroundImage: `url(${convertAWSImage(props.movie.image, 50)}), url(${convertAWSImage(props.movie.image, 8)})`,
                 }}
             />
             <div className={"container"}>
@@ -29,20 +27,12 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     )}
                 </div>
                 <div className={"imageAndInfo"}>
-                    <a
-                        href={`https://www.imdb.com/title/${props.id}`}
-                        target="_blank"
-                        rel="noopener"
-                        className="movieLink"
-                        style={{
-                            backgroundImage: `url(${convertAWSImage(
-                                props.movie.image,
-                                500
-                            )})`,
-                        }}
-                    >
-                        {`image of the poster for the film: ${props.movie.title}`}
-                    </a>
+                    <ImageOpti
+                        smallImg={convertAWSImage(props.movie.image, 8)}
+                        fullImg={convertAWSImage(props.movie.image, 300)}
+                        id={props.id}
+                        title={props.movie.title}
+                    />
                     <div className="vertical">
                         <table>
                             <tbody>
@@ -92,7 +82,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 <RadarrIntegration movie={props.movie} />
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
-                    <Suspense fallback={() => <p>Loading...</p>}>
+                    <Suspense fallback={<p>Loading...</p>}>
                         <ActorListLazy actorList={props.movie.actorList} />
                     </Suspense>
                 )}

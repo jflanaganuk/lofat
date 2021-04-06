@@ -39,7 +39,7 @@ export const Container = (props: ContainerProps) => {
                     </button>
                 )}
             </div>
-            <Suspense fallback={() => <p>Loading...</p>}>
+            <Suspense fallback={<p>Loading...</p>}>
                 <MovieContainerLazy
                     id={item.id}
                     image={item.image}
