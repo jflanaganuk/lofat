@@ -34,7 +34,7 @@
 .subContainer {
     z-index: -1;
 
-    filter: blur(10px);
+    filter: blur(30px);
     opacity: 0.5;
     height: 100vh;
     width: 100vw;
@@ -100,5 +100,7 @@
     padding: 20px;
     @media only screen and (min-width: 750px) {
         width: 400px;
+        max-height: 250px;
+        overflow-y: auto;
     }
 }

@@ -13,7 +13,10 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
             <div
                 className={"subContainer"}
                 style={{
-                    backgroundImage: `url(${convertAWSImage(props.image, 50)})`,
+                    backgroundImage: `url(${convertAWSImage(
+                        props.movie.image,
+                        500
+                    )})`,
                 }}
             />
             <div className={"container"}>
@@ -39,7 +42,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     >
                         {`image of the poster for the film: ${props.movie.title}`}
                     </a>
-                    <div>
+                    <div className="vertical">
                         <table>
                             <tbody>
                                 <tr>
