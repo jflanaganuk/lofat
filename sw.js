@@ -14,8 +14,8 @@
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = 'precache-v1.0.21';
-const RUNTIME = 'runtime-v1.0.21';
+const PRECACHE = 'precache-v1.0.24';
+const RUNTIME = 'runtime-v1.0.24';
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
@@ -51,7 +51,7 @@ self.addEventListener('activate', event => {
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
-  if (event.request.url.startsWith(self.location.origin) || event.request.url.includes('amazon') || event.request.url.includes('imdb-api')) {
+  if (event.request.url.startsWith(self.location.origin) || event.request.url.includes('amazon') || event.request.url.includes('imdb-api') || event.request.url.includes('duckduckgo')) {
     // for uploadr specific files (eg. the boxOffice10, we should try to fetch new files and fallback if failed)
     if (event.request.url.includes('boxOffice10')) {
       event.respondWith(
@@ -73,10 +73,13 @@ self.addEventListener('fetch', event => {
           if (!cachedResponse) {
             return caches.open(RUNTIME).then(cache => {
               return fetch(event.request).then(response => {
-                // Put a copy of the response in the runtime cache.
-                return cache.put(event.request, response.clone()).then(() => {
-                  return response;
-                });
+                if (response.status !== 503) {
+                  // Put a copy of the response in the runtime cache.
+                  return cache.put(event.request, response.clone()).then(() => {
+                    return response;
+                  });
+                }
+                return response;
               });
             });
           }

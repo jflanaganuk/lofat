@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { BoxOfficeItem } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
-import { MovieContainer } from "./movieContainer";
 import { GithubLink } from "./githubLink";
+
+const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
 type ContainerProps = {
     movies: { items: BoxOfficeItem[] } | null;
@@ -38,15 +39,17 @@ export const Container = (props: ContainerProps) => {
                     </button>
                 )}
             </div>
-            <MovieContainer
-                id={item.id}
-                image={item.image}
-                title={item.title}
-                gross={item.gross}
-                rank={item.rank}
-                weekend={item.weekend}
-                weeks={item.weeks}
-            />
+            <Suspense fallback={() => <p>Loading...</p>}>
+                <MovieContainerLazy
+                    id={item.id}
+                    image={item.image}
+                    title={item.title}
+                    gross={item.gross}
+                    rank={item.rank}
+                    weekend={item.weekend}
+                    weeks={item.weeks}
+                />
+            </Suspense>
             <GithubLink />
         </div>
     );

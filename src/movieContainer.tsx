@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BoxOfficeItem, Title } from "../types";
 import { Movie } from "./movie";
 
-export const MovieContainer = (props: BoxOfficeItem) => {
+const MovieContainer = (props: BoxOfficeItem) => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
@@ -23,3 +23,5 @@ export const MovieContainer = (props: BoxOfficeItem) => {
 
     return <Movie movie={response} {...props} />;
 };
+
+export default MovieContainer;

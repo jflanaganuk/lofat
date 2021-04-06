@@ -4,7 +4,7 @@ import { Actor } from "./actor";
 
 import "./actorList.scss";
 
-export const ActorList = (props: { actorList: ActorType[] }) => {
+const ActorList = (props: { actorList: ActorType[] }) => {
     const [currentActor, setCurrentActor] = useState(0);
     const actorRef = useRef(null);
     useEffect(() => {
@@ -69,3 +69,5 @@ export const ActorList = (props: { actorList: ActorType[] }) => {
         </div>
     );
 };
+
+export default ActorList;

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BoxOfficeItem, Title } from "../types";
-import { ActorList } from "./actorList";
 
 import "./movie.scss";
 import { RadarrIntegration } from "./radarrIntegration";
 import { TrailerContainer } from "./trailerContainer";
+
+const ActorListLazy = lazy(() => import("./actorList"));
 
 export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
     if (!props.movie) return null;
@@ -91,7 +92,9 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 <RadarrIntegration movie={props.movie} />
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
-                    <ActorList actorList={props.movie.actorList} />
+                    <Suspense fallback={() => <p>Loading...</p>}>
+                        <ActorListLazy actorList={props.movie.actorList} />
+                    </Suspense>
                 )}
             </div>
         </>
