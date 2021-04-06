@@ -1,7 +1,6 @@
 - fix actor scroll with left and right buttons (it can desync from the normal scroll behaviour on touch devices)
 - add a router and load the film using url params so it keeps it's place
-- handle missing images better
-- look into other lighthouse suggestions
 - fix the iframe scrollbar on some trailers
 - enhance the radarr integration flow, so far you only get one attempt
 - add "side" buttons for mobile/small screens only
+- increase perf by splitting bundles

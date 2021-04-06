@@ -1,6 +1,5 @@
 import React from "react";
 import { BoxOfficeItem, Title } from "../types";
-import { getActorImdbLink } from "./actor";
 import { ActorList } from "./actorList";
 
 import "./movie.scss";
@@ -27,9 +26,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 </div>
                 <div className={"imageAndInfo"}>
                     <a
-                        href={`https://www.imdb.com/find?q=${getActorImdbLink(
-                            props.movie.title
-                        )}&ref_=nv_sr_sm`}
+                        href={`https://www.imdb.com/title/${props.id}`}
                         target="_blank"
                         rel="noopener"
                         className="movieLink"

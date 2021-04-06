@@ -1,6 +1,6 @@
 import React from "react";
 import { YouTubeTrailer } from "../types";
-import { getActorImdbLink } from "./actor";
+import { convertSpacesToPlus } from "./actor";
 
 import "./trailer.scss";
 
@@ -20,7 +20,7 @@ export const Trailer = (props: { trailer: YouTubeTrailer | null }) => {
                 <p>
                     No trailer? Try clicking{" "}
                     <a
-                        href={`https://www.youtube.com/results?search_query=${getActorImdbLink(
+                        href={`https://www.youtube.com/results?search_query=${convertSpacesToPlus(
                             props.trailer.title
                         )}+trailer`}
                         target="_blank"

@@ -13,9 +13,7 @@ export const Actor = (props: ActorType) => {
         <div className="actorContainer">
             <h3>{props.name ? props.name : "Unknown"}</h3>
             <a
-                href={`https://www.imdb.com/find?q=${getActorImdbLink(
-                    props.name
-                )}&ref_=nv_sr_sm`}
+                href={`https://www.imdb.com/name/${props.id}`}
                 target="_blank"
                 rel="noopener"
             >
@@ -37,7 +35,7 @@ export const Actor = (props: ActorType) => {
     );
 };
 
-export function getActorImdbLink(input: string): string {
+export function convertSpacesToPlus(input: string): string {
     const lowercase = input.toLowerCase();
     const replaceSpaceWithPlus = lowercase.replace(" ", "+");
     return replaceSpaceWithPlus;
