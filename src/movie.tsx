@@ -104,8 +104,11 @@ export function getFullSizeImg(input: string): string {
 
 export function convertAWSImage(input: string, resolution: number = 1000) {
     const ratio = getRatio(input);
-    const left = resolution;
-    const right = Math.floor(left * ratio);
+    const left = ratio > 1 ? resolution : resolution * 3;
+    const right =
+        ratio > 1
+            ? Math.floor(resolution * ratio)
+            : Math.floor(resolution * ratio) * 3;
     const param = `._V1_UX${left}_CR0,50,${left},${right}.jpg`;
     const splitInput = input.split("._V1_")[0];
     return `${splitInput}${param}`;
