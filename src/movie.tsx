@@ -15,7 +15,10 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
             <div
                 className={"subContainer"}
                 style={{
-                    backgroundImage: `url(${convertAWSImage(props.movie.image, 50)}), url(${convertAWSImage(props.movie.image, 8)})`,
+                    backgroundImage: `url(${convertAWSImage(
+                        props.movie.image,
+                        50
+                    )}), url(${convertAWSImage(props.movie.image, 8)})`,
                 }}
             />
             <div className={"container"}>

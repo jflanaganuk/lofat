@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './imageOpti.scss';
+import "./imageOpti.scss";
 
 type ImageOptiProps = {
     smallImg: string;
@@ -8,7 +8,7 @@ type ImageOptiProps = {
     id: string;
     title: string;
     loadingImg?: string;
-}
+};
 
 export const ImageOpti = (props: ImageOptiProps) => {
     return (
@@ -23,5 +23,5 @@ export const ImageOpti = (props: ImageOptiProps) => {
         >
             {`image of the poster for the film: ${props.title}`}
         </a>
-    )
-}
+    );
+};
