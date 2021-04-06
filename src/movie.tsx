@@ -39,48 +39,52 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     >
                         {`image of the poster for the film: ${props.movie.title}`}
                     </a>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Rank</td>
-                                <td>{props.rank}</td>
-                            </tr>
-                            <tr>
-                                <td>Release Date</td>
-                                <td>{formatDate(props.movie.releaseDate)}</td>
-                            </tr>
-                            <tr>
-                                <td>Weeks in Box Office</td>
-                                <td>{props.weeks}</td>
-                            </tr>
-                            <tr>
-                                <td>Opening Weekend</td>
-                                <td>{props.weekend}</td>
-                            </tr>
-                            <tr>
-                                <td>Genre</td>
-                                <td>{props.movie.genres}</td>
-                            </tr>
-                            <tr>
-                                <td>IMDb Rating</td>
-                                <td>
-                                    {props.movie.imDbRating
-                                        ? `${props.movie.imDbRating}/10`
-                                        : "Not Yet Rated"}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>MetaCritic Rating</td>
-                                <td>
-                                    {props.movie.metacriticRating
-                                        ? `${props.movie.metacriticRating}/100`
-                                        : "Not Yet Rated"}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Rank</td>
+                                    <td>{props.rank}</td>
+                                </tr>
+                                <tr>
+                                    <td>Release Date</td>
+                                    <td>
+                                        {formatDate(props.movie.releaseDate)}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Weeks in Box Office</td>
+                                    <td>{props.weeks}</td>
+                                </tr>
+                                <tr>
+                                    <td>Opening Weekend</td>
+                                    <td>{props.weekend}</td>
+                                </tr>
+                                <tr>
+                                    <td>Genre</td>
+                                    <td>{props.movie.genres}</td>
+                                </tr>
+                                <tr>
+                                    <td>IMDb Rating</td>
+                                    <td>
+                                        {props.movie.imDbRating
+                                            ? `${props.movie.imDbRating}/10`
+                                            : "Not Yet Rated"}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MetaCritic Rating</td>
+                                    <td>
+                                        {props.movie.metacriticRating
+                                            ? `${props.movie.metacriticRating}/100`
+                                            : "Not Yet Rated"}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p className="plot">{props.movie.plot}</p>
+                    </div>
                 </div>
-                <p className="plot">{props.movie.plot}</p>
                 <RadarrIntegration movie={props.movie} />
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (

@@ -89,7 +89,7 @@
     overflow-y: hidden;
     border-top: 1px solid #ecf0f1;
     @media only screen and (min-width: 750px) {
-        border-top: none;
+        margin-top: 10px;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -97,6 +97,8 @@
 }
 
 .plot {
-    padding: 15px 0;
-    border-bottom: 1px solid #ecf0f1;
+    padding: 20px;
+    @media only screen and (min-width: 750px) {
+        width: 400px;
+    }
 }
