@@ -32,12 +32,15 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                         )}&ref_=nv_sr_sm`}
                         target="_blank"
                         rel="noopener"
+                        className="movieLink"
+                        style={{
+                            backgroundImage: `url(${convertAWSImage(
+                                props.movie.image,
+                                500
+                            )})`,
+                        }}
                     >
-                        <img
-                            className="movieImage"
-                            src={convertAWSImage(props.movie.image, 500)}
-                            alt={`image of ${props.movie.title} poster`}
-                        />
+                        {`image of the poster for the film: ${props.movie.title}`}
                     </a>
                     <table>
                         <tbody>

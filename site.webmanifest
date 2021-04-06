@@ -26,6 +26,6 @@
   ],
   "start_url": "/imdbfetch/index.html",
   "display": "standalone",
-  "theme_color": "#fff",
-  "background_color": "#000"
+  "theme_color": "#ecf0f1",
+  "background_color": "#2c3e50"
 }

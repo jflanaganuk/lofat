@@ -6,16 +6,17 @@
     justify-self: flex-end;
     @media only screen and (min-width: 1800px) {
         position: absolute;
-        top: 0;
+        top: 60px;
         right: 0;
     }
 }
 
 .trailerFrame {
     border: none;
-    width: 320px;
-    height: 200px;
+    width: 95vw;
+    height: calc(95vw * 0.625);
     overflow: hidden;
+    filter: drop-shadow(0px 0px 15px #000);
     html {
         overflow: hidden;
     }
