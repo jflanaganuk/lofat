@@ -2,6 +2,7 @@ import React from "react";
 import { ActorType } from "../types";
 
 import "./actor.scss";
+import { convertAWSImage } from "./movie";
 
 const noImgUrl = "https://imdb-api.com/images/original/nopicture.jpg";
 const fallbackUrl =
@@ -22,7 +23,9 @@ export const Actor = (props: ActorType) => {
                     className="actorImageCircle"
                     style={{
                         backgroundImage: `url(${
-                            props.image !== noImgUrl ? props.image : fallbackUrl
+                            props.image !== noImgUrl
+                                ? convertAWSImage(props.image, 200)
+                                : fallbackUrl
                         })`,
                     }}
                 >

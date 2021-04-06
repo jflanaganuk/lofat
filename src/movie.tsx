@@ -13,7 +13,9 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
         <>
             <div
                 className={"subContainer"}
-                style={{ backgroundImage: `url(${props.image})` }}
+                style={{
+                    backgroundImage: `url(${convertAWSImage(props.image, 50)})`,
+                }}
             />
             <div className={"container"}>
                 <h2>{props.movie.title}</h2>
@@ -33,7 +35,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     >
                         <img
                             className="movieImage"
-                            src={convertAWSImage(props.movie.image)}
+                            src={convertAWSImage(props.movie.image, 500)}
                             alt={`image of ${props.movie.title} poster`}
                         />
                     </a>
@@ -103,7 +105,7 @@ export function getFullSizeImg(input: string): string {
 export function convertAWSImage(input: string, resolution: number = 1000) {
     const ratio = getRatio(input);
     const left = resolution;
-    const right = left * ratio;
+    const right = Math.floor(left * ratio);
     const param = `._V1_UX${left}_CR0,50,${left},${right}.jpg`;
     const splitInput = input.split("._V1_")[0];
     return `${splitInput}${param}`;
