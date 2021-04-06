@@ -33,12 +33,8 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     >
                         <img
                             className="movieImage"
-                            src={props.image}
+                            src={convertAWSImage(props.movie.image)}
                             alt={`image of ${props.movie.title} poster`}
-                            onLoad={(e: any) => {
-                                e.target.src =
-                                    props.movie?.image || props.image;
-                            }}
                         />
                     </a>
                     <table>
@@ -102,4 +98,20 @@ export function formatDate(input: string): string {
 export function getFullSizeImg(input: string): string {
     const cutString = input.split("@")[0];
     return `${cutString}@.jpg`;
+}
+
+export function convertAWSImage(input: string, resolution: number = 1000) {
+    const ratio = getRatio(input);
+    const left = resolution;
+    const right = left * ratio;
+    const param = `._V1_UX${left}_CR0,50,${left},${right}.jpg`;
+    const splitInput = input.split("._V1_")[0];
+    return `${splitInput}${param}`;
+}
+
+export function getRatio(input: string): number {
+    const startPos: number = input.search("Ratio") + 5;
+    if (startPos === -1) return 1.375;
+    const ratioString = input.substr(startPos, 6);
+    return 1 / Number(ratioString);
 }

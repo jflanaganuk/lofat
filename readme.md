@@ -32,3 +32,11 @@ Click for a live example!
 
 7. Copy the current `.json` (from step 5) files into `src/stubs`
 8. Run `npm run watch` to start local development
+
+# Notes about AWS image params
+
+- You can set the desired quality of the images by adding `@._V1_UX1000_CR0,6,1000,1375.jpg` to the end of the request url.
+- The parameters appear to be as follows (after randomly testing):
+- UX How high res the image should be (assuming dpi)
+- CR0,6 appears to control cropping in some way, increasing the second number moves the image down?
+- The final two appear to be setting the aspect ratio, I have found best results to be to have the first number match the UX number (otherwise you end up with white where the image does not fit or a cropped image)

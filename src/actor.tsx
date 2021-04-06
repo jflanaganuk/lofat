@@ -10,7 +10,7 @@ const fallbackUrl =
 export const Actor = (props: ActorType) => {
     return (
         <div className="actorContainer">
-            <h2>{props.asCharacter ? props.asCharacter : "Unnamed"}</h2>
+            <h3>{props.name ? props.name : "Unknown"}</h3>
             <a
                 href={`https://www.imdb.com/find?q=${getActorImdbLink(
                     props.name
@@ -29,7 +29,7 @@ export const Actor = (props: ActorType) => {
                     {props.name}
                 </div>
             </a>
-            <p>{props.name ? props.name : "Unknown"}</p>
+            <p>{props.asCharacter ? props.asCharacter : "Unnamed"}</p>
         </div>
     );
 };
