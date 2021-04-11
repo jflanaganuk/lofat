@@ -40,3 +40,17 @@ Click for a live example!
 - UX How high res the image should be (assuming dpi)
 - CR0,6 appears to control cropping in some way, increasing the second number moves the image down?
 - The final two appear to be setting the aspect ratio, I have found best results to be to have the first number match the UX number (otherwise you end up with white where the image does not fit or a cropped image)
+
+# Apache config with React Router
+
+Because react router pushes `/the-new-page` to the end of the URL, if you refresh the link, apache does not know where to send you.
+
+The solution seems to be to get the app to redirect you back to `index.html` always so that the router can take care of it.
+
+The following URLs helped to solve this issue:
+
+[Editing the .htaccess correctly](https://www.andreasreiterer.at/fix-browserrouter-on-apache/)
+
+[Knowing which .conf file to edit](http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu)
+
+Thanks to this the following link should take you to the film ["nobody"](https://www.uploadr.co.uk/imdbfetch/tt7888964)

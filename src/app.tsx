@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Container } from "./container";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Offline } from "./offline";
 
 const App = () => {
     const [response, setResponse] = useState(null);
@@ -21,7 +23,21 @@ const App = () => {
             .catch((e) => console.error(e));
     }, []);
 
-    return <Container movies={response} />;
+    return (
+        <Router basename="/imdbfetch">
+            <Switch>
+                <Route exact path="/offline">
+                    <Offline />
+                </Route>
+                <Route exact path="/">
+                    <Container movies={response} />
+                </Route>
+                <Route path="/:id">
+                    <Container movies={response} />
+                </Route>
+            </Switch>
+        </Router>
+    );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

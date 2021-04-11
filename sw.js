@@ -14,13 +14,17 @@
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = 'precache-v1.0.28';
-const RUNTIME = 'runtime-v1.0.28';
+const PRECACHE = 'precache-v1.0.32';
+const RUNTIME = 'runtime-v1.0.32';
+
+const offlineUrl = "./offline";
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
+  offlineUrl,
   'index.html',
   './', // Alias for index.html
+  './bundle.js',
 ];
 
 // The install handler takes care of precaching the resources we always need.
@@ -80,6 +84,10 @@ self.addEventListener('fetch', event => {
                   });
                 }
                 return response;
+              })
+              .catch(error => {
+                // respond with offline page (should be stored in cache)
+                return caches.match(offlineUrl)
               });
             });
           }

@@ -1,6 +1,6 @@
 - fix actor scroll with left and right buttons (it can desync from the normal scroll behaviour on touch devices)
-- add a router and load the film using url params so it keeps it's place
 - fix the iframe scrollbar on some trailers
 - enhance the radarr integration flow, so far you only get one attempt
 - add "side" buttons for mobile/small screens only
 - increase perf by splitting bundles
+- Server side might be better to work what day it is ran on and start the weekly countdown from a monday so we know new data is fully available?

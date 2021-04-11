@@ -31,7 +31,7 @@ const fetchData = () => {
 }
 
 function moveOldFile(filename) {
-    fs.rename(`public/outputs/${filename}old.json`, `public/outputs/${filename}.json`, e => {
+    fs.rename(`public/outputs/${filename}.json`, `public/outputs/${filename}old.json`, e => {
         if (!e) {
             console.log(`renamed ${filename} to ${filename}old`);
             return;

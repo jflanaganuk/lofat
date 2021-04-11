@@ -39,24 +39,30 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                     <div className="vertical">
                         <table>
                             <tbody>
-                                <tr>
-                                    <td>Rank</td>
-                                    <td>{props.rank}</td>
-                                </tr>
+                                {props.rank && (
+                                    <tr>
+                                        <td>Rank</td>
+                                        <td>{props.rank}</td>
+                                    </tr>
+                                )}
                                 <tr>
                                     <td>Release Date</td>
                                     <td>
                                         {formatDate(props.movie.releaseDate)}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Weeks in Box Office</td>
-                                    <td>{props.weeks}</td>
-                                </tr>
-                                <tr>
-                                    <td>Opening Weekend</td>
-                                    <td>{props.weekend}</td>
-                                </tr>
+                                {props.weeks && (
+                                    <tr>
+                                        <td>Weeks in Box Office</td>
+                                        <td>{props.weeks}</td>
+                                    </tr>
+                                )}
+                                {props.weekend && (
+                                    <tr>
+                                        <td>Opening Weekend</td>
+                                        <td>{props.weekend}</td>
+                                    </tr>
+                                )}
                                 <tr>
                                     <td>Genre</td>
                                     <td>{props.movie.genres}</td>

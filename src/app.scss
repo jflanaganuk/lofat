@@ -16,7 +16,9 @@ html body {
     bottom: 10px;
     right: 10px;
     z-index: 999;
-    button {
+    a {
+        text-decoration: none;
+        font-size: 1rem;
         padding: 10px 20px;
         border: 1px solid #ecf0f1;
         background-color: #2c3e50;

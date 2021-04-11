@@ -6,12 +6,12 @@ export type EnvType = {
 
 export type BoxOfficeItem = {
     id: string;
-    rank: string;
-    title: string;
-    image: string;
-    weekend: string;
-    gross: string;
-    weeks: string;
+    rank?: string;
+    title?: string;
+    image?: string;
+    weekend?: string;
+    gross?: string;
+    weeks?: string;
 }
 
 export type BoxOffice = {
