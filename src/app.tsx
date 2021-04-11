@@ -32,6 +32,9 @@ const App = () => {
                 <Route exact path="/">
                     <Container movies={response} />
                 </Route>
+                <Route exact path="/index.html">
+                    <Container movies={response} />
+                </Route>
                 <Route path="/:id">
                     <Container movies={response} />
                 </Route>
