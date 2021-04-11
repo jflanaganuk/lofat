@@ -88,7 +88,9 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                         <p className="plot">{props.movie.plot}</p>
                     </div>
                 </div>
-                <RadarrIntegration movie={props.movie} />
+                <div className="radarrContainer">
+                    <RadarrIntegration movie={props.movie} />
+                </div>
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.actorList && (
                     <Suspense fallback={<p>Loading...</p>}>
