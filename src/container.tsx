@@ -55,7 +55,7 @@ const RoutedControls = (props: RoutedControlsProps) => {
                     className="previous"
                     to={`${props.movies.items[currentPosition - 1].id}`}
                 >
-                    GO BACK
+                    {"<"}
                 </Link>
             )}
             {currentPosition < props.movies.items.length - 1 && (
@@ -63,7 +63,7 @@ const RoutedControls = (props: RoutedControlsProps) => {
                     className="next"
                     to={`${props.movies.items[currentPosition + 1].id}`}
                 >
-                    GO FORWARD
+                    {">"}
                 </Link>
             )}
         </div>
