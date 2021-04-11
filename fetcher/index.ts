@@ -7,7 +7,7 @@ const { key } = env;
 
 setInterval(() => {
     fetchData()
-}, 1000 * 60 * 60 * 24); // Run once a day
+}, 1000 * 60 * 60 * 24 * 7); // Run once a week
 
 const fetchData = () => {
     const url = new URL(
@@ -18,6 +18,7 @@ const fetchData = () => {
         .then(res => res.json())
         .then((data: BoxOffice) => {
             if (data.items.length) {
+                moveOldFile('boxOffice10');
                 writeFile(data, 'boxOffice10');
                 data.items.map(item => {
                     fetchFilm(item)
@@ -29,11 +30,22 @@ const fetchData = () => {
         .catch(e => console.error(e))
 }
 
+function moveOldFile(filename) {
+    fs.rename(`public/outputs/${filename}old.json`, `public/outputs/${filename}.json`, e => {
+        if (!e) {
+            console.log(`renamed ${filename} to ${filename}old`);
+            return;
+        }
+        console.error(e);
+    });
+}
+
 function writeFile(data, filename) {
     const formatted = JSON.stringify(data);
+    const date = new Date();
     fs.writeFile(`public/outputs/${filename}.json`, formatted, e => {
         if (e) return console.error(e);
-        console.log(`Wrote ${filename} to file`)
+        console.log(`Wrote ${filename} to file at ${date.toLocaleDateString()}`)
     })
 }
 

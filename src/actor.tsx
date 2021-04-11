@@ -21,7 +21,7 @@ export const Actor = (props: ActorType) => {
                     style={{
                         backgroundImage: `url(${
                             props.image !== noImgUrl
-                                ? convertAWSImage(props.image, 128)
+                                ? convertAWSImage(props.image, 256)
                                 : fallbackUrl
                         }), url(
                             ${convertAWSImage(props.image, 10)}
