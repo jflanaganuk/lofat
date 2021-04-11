@@ -39,6 +39,10 @@ html body {
             right: 0;
         }
 
+        @media only screen and (min-width: 400px) {
+            padding: 120px 15px;
+        }
+
         @media only screen and (min-width: 750px) {
             padding: 100vh 20px;
             font-size: 2rem;
