@@ -29,4 +29,7 @@
     background-position: center;
     background-repeat: no-repeat;
     font-size: 0;
+    &:hover {
+        box-shadow: inset 0px 0px 0px 3px #f1c40f, 0px 0px 0px 3px #f1c40f;
+    }
 }

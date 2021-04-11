@@ -53,9 +53,6 @@
             margin-left: 15px;
         }
     }
-    @media only screen and (min-width: 1800px) {
-        // min-height: 500px;
-    }
 }
 
 .actorList {
@@ -75,8 +72,11 @@
 .plot {
     padding: 20px;
     @media only screen and (min-width: 750px) {
-        width: 400px;
+        width: calc(100vw - 600px);
         max-height: 250px;
         overflow-y: auto;
+    }
+    @media only screen and (min-width: 1780px) {
+        width: 400px;
     }
 }
