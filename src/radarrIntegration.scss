@@ -38,7 +38,6 @@
     border-radius: 50px;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    width: 50px;
     z-index: 9999;
     img {
         width: 20px;
@@ -71,6 +70,7 @@
     justify-content: center;
     align-items: center;
     z-index: 9900;
+    padding: 20px;
     h1 {
         margin: 0;
     }
