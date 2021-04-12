@@ -32,7 +32,7 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 <div className={"imageAndInfo"}>
                     <ImageOpti
                         smallImg={convertAWSImage(props.movie.image, 8)}
-                        fullImg={convertAWSImage(props.movie.image, 500)}
+                        fullImg={convertAWSImage(props.movie.image, 1024)}
                         id={props.id}
                         title={props.movie.title}
                     />
