@@ -10,15 +10,16 @@ const ActorListLazy = lazy(() => import("./actorList"));
 
 export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
     if (!props.movie) return null;
+    const image = getRealPicture(props.image, props.movie.image);
     return (
         <>
             <div
                 className={"subContainer"}
                 style={{
                     backgroundImage: `url(${convertAWSImage(
-                        props.movie.image,
+                        image,
                         50
-                    )}), url(${convertAWSImage(props.movie.image, 8)})`,
+                    )}), url(${convertAWSImage(image, 8)})`,
                 }}
             />
             <div className={"container"}>
@@ -31,8 +32,8 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                 </div>
                 <div className={"imageAndInfo"}>
                     <ImageOpti
-                        smallImg={convertAWSImage(props.movie.image, 8)}
-                        fullImg={convertAWSImage(props.movie.image, 1024)}
+                        smallImg={convertAWSImage(image, 8)}
+                        fullImg={convertAWSImage(image, 1024)}
                         id={props.id}
                         title={props.movie.title}
                     />
@@ -131,3 +132,13 @@ export function getRatio(input: string): number {
     const ratioString = input.substr(startPos, 6);
     return 1 / Number(ratioString);
 }
+
+const getRealPicture = (
+    propsPic: string | undefined,
+    propsMoviePic: string
+): string => {
+    const noPicString = "nopicture.jpg";
+    if (!propsMoviePic.includes(noPicString)) return propsMoviePic;
+    if (propsPic && !propsPic.includes(noPicString)) return propsPic;
+    return "noImageString";
+};
