@@ -1,4 +1,2 @@
-- fix actor scroll with left and right buttons (it can desync from the normal scroll behaviour on touch devices)
-- fix the iframe scrollbar on some trailers
 - increase perf by splitting bundles
 - Server side might be better to work what day it is ran on and start the weekly countdown from a monday so we know new data is fully available?

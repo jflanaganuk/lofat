@@ -5,55 +5,68 @@ import { Actor } from "./actor";
 import "./actorList.scss";
 
 const ActorList = (props: { actorList: ActorType[] }) => {
-    const [currentActor, setCurrentActor] = useState(0);
-    const actorRef = useRef(null);
+    const actorRef = useRef<HTMLDivElement>(null);
+    const [scroll, setScroll] = useState(1);
     useEffect(() => {
-        // @ts-ignore
-        actorRef.current?.scrollTo({
-            left: currentActor * actorWidth,
-            behavior: "smooth",
-        });
-    }, [currentActor]);
+        /*
+         *  For some reason react does not like showing the buttons
+         *  when state begins as 0, so there is a small delay here
+         *  to force it to update once.
+         */
+        setTimeout(() => {
+            setScroll(0);
+        }, 100);
+    }, []);
     useEffect(() => {
-        setCurrentActor(0);
+        !is_touch_enabled() &&
+            actorRef.current?.scrollTo({ left: scroll, behavior: "smooth" });
+    }, [scroll]);
+    useEffect(() => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
         });
-        // @ts-ignore
         actorRef.current?.scrollTo({
             left: 0,
             behavior: "smooth",
         });
     }, [props.actorList]);
-    const actorAmount = props.actorList.length;
-    const actorWidth = 192;
-    const actorMultiplier = 3;
-    const lowerBound = 0;
-    const upperBound = actorAmount - window.innerWidth / actorWidth;
+    const length =
+        (actorRef.current?.scrollWidth || 0) -
+        (actorRef.current?.clientWidth || 0);
     return (
         <div className="actorListContainer">
-            {currentActor > lowerBound && (
-                <button
-                    className="actorScrollLeft"
-                    onClick={(e: any) => {
-                        setCurrentActor(currentActor - actorMultiplier);
-                    }}
-                >
-                    {"<"}
-                </button>
+            {!is_touch_enabled() && (
+                <div className="buttonContainer">
+                    <button
+                        className="actorScrollLeft"
+                        disabled={scroll <= 0}
+                        onClick={() => {
+                            setScroll(
+                                scroll - (actorRef.current?.clientWidth || 0)
+                            );
+                        }}
+                    >
+                        {"<"}
+                    </button>
+                    <button
+                        className="actorScrollRight"
+                        onClick={() =>
+                            setScroll(
+                                scroll + (actorRef.current?.clientWidth || 0)
+                            )
+                        }
+                        disabled={scroll >= length}
+                    >
+                        {">"}
+                    </button>
+                </div>
             )}
-            {currentActor < upperBound && (
-                <button
-                    className="actorScrollRight"
-                    onClick={(e: any) => {
-                        setCurrentActor(currentActor + actorMultiplier);
-                    }}
-                >
-                    {">"}
-                </button>
-            )}
-            <div className="actorList" ref={actorRef}>
+            <div
+                className="actorList"
+                ref={actorRef}
+                onScroll={(e: any) => setScroll(e.target.scrollLeft)}
+            >
                 {props.actorList.map((actor) => {
                     return (
                         <Actor
@@ -69,5 +82,13 @@ const ActorList = (props: { actorList: ActorType[] }) => {
         </div>
     );
 };
+
+function is_touch_enabled() {
+    return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+    );
+}
 
 export default ActorList;
