@@ -10,6 +10,7 @@ export const RadarrIntegration = (props: { movie: Title }) => {
     if (!url) return <RadarrSetup />;
     return (
         <>
+            <RadarrSetup />
             <a
                 href={`http://${url}/add/new?term=${props.movie.title}`}
                 target="_blank"
@@ -19,7 +20,6 @@ export const RadarrIntegration = (props: { movie: Title }) => {
                     <span className="big">+ </span>Add to Radarr
                 </button>
             </a>
-            <RadarrSetup />
         </>
     );
 };
