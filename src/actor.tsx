@@ -8,7 +8,10 @@ const noImgUrl = "https://imdb-api.com/images/original/nopicture.jpg";
 const fallbackUrl =
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Tpf5m-KYLPWC3JvjWq5CigAAAA%26pid%3DApi&f=1";
 
-export const Actor = (props: ActorType) => {
+export const Actor = (props: ActorType & { offset: number }) => {
+    const styleCustom = {
+        "--offset": `${props.offset * 100}ms`,
+    } as React.CSSProperties;
     return (
         <div className="actorContainer">
             <a
@@ -26,6 +29,7 @@ export const Actor = (props: ActorType) => {
                         }), url(
                             ${convertAWSImage(props.image, 10)}
                         )`,
+                        ...styleCustom,
                     }}
                 >
                     {props.name}

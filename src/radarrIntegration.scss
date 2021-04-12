@@ -2,10 +2,11 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
+    height: 53px;
     display: flex;
     flex-direction: row-reverse;
     width: 220px;
-    justify-content: space-between;
+    justify-content: flex-start;
     z-index: 9999;
     a {
         text-decoration: none;
@@ -20,15 +21,26 @@
     color: #ecf0f1;
     background-color: #27ae60;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 0.5rem 1rem;
     z-index: 9999;
+    margin-right: 10px;
     &:hover {
         cursor: pointer;
         background-color: #2ecc71;
         & .big {
             animation: spin 1s linear infinite;
         }
+    }
+    animation: textgrow 200ms linear;
+}
+
+@keyframes textgrow {
+    0% {
+        font-size: 0rem;
+    }
+    100% {
+        font-size: 0.95rem;
     }
 }
 

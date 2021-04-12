@@ -67,7 +67,7 @@ const ActorList = (props: { actorList: ActorType[] }) => {
                 ref={actorRef}
                 onScroll={(e: any) => setScroll(e.target.scrollLeft)}
             >
-                {props.actorList.map((actor) => {
+                {props.actorList.map((actor, index) => {
                     return (
                         <Actor
                             name={actor.name}
@@ -75,6 +75,7 @@ const ActorList = (props: { actorList: ActorType[] }) => {
                             image={actor.image}
                             asCharacter={actor.asCharacter}
                             key={actor.id}
+                            offset={index}
                         />
                     );
                 })}
