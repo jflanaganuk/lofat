@@ -7,7 +7,7 @@ const { key } = env;
 
 setInterval(() => {
     fetchData()
-}, 1000 * 60 * 60 * 24 * 7); // Run once a week
+}, 1000 * 60 * 60 * 24); // Run once a day
 
 const fetchData = () => {
     const url = new URL(
