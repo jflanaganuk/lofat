@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cache Me If You Can</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1>CacheMeIfYouCan 📦</h1>
+                <small
+                    >Experimental caching implementation for json
+                    requests</small
+                >
+            </div>
+            <p>
+                Created by Joshua Flanagan
+                <a
+                    href="https://github.com/jflanaganuk/"
+                    target="_blank"
+                    rel="noopener"
+                    >[github]</a
+                >
+            </p>
+        </div>
+        <div class="log">... log info here</div>
+        <script>
+            setInterval(function () {
+                refreshLog();
+            }, 3000);
+            function refreshLog() {
+                fetch("http://localhost:4000/log.txt")
+                    .then((res) => res.text())
+                    .then((res) => {
+                        const resFormatted = String(`[${res.slice(0, -2)}]`);
+                        return JSON.parse(resFormatted);
+                    })
+                    .then((response) => {
+                        const log = document.querySelector(".log");
+                        log.innerHTML = response.reduce(
+                            (acc, line) => acc + `${line}<br/>`,
+                            ""
+                        );
+                    });
+            }
+            refreshLog();
+        </script>
+    </body>
+</html>
