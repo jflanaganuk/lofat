@@ -5,3 +5,9 @@ types.js
 public/outputs/**/*
 bundle.js
 bundle.js.map
+
+!cacheMeIfYouCan/*.json
+!cacheMeIfYouCan/cached/test.json
+
+cacheMeIfYouCan/env.json
+cacheMeIfYouCan/log.txt
