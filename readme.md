@@ -10,9 +10,14 @@ Click for a live example!
 <img src="./images/desktop.png" height="200"/>
 <img src="./images/mobile.png" height="200"/>
 
-### Current Lighthouse Scores (mobile - incognito)
+## Current Lighthouse Scores 
+### Mobile - incognito
 
 <img src="./images/currentScore.png" height="200"/>
+
+### Desktop - incognito
+
+<img src="./images/currentScoreDesktop.png" height="200"/>
 
 ## Development steps
 
