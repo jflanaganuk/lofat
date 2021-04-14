@@ -54,3 +54,13 @@ The following URLs helped to solve this issue:
 [Knowing which .conf file to edit](http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu)
 
 Thanks to this the following link should take you to the film ["nobody"](https://www.uploadr.co.uk/imdbfetch/tt7888964)
+
+# Apache CORS Settings
+
+Solved by following: [this guide](https://blog.magepsycho.com/invalid-command-header-perhaps-misspelled-or-defined-by-a-module-not-included-in-the-server-configuration/)
+
+And adding 
+```
+Header set Access-Control-Allow-Origin "*"
+``` 
+to the `.conf` and restarting
