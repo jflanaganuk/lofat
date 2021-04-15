@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { rootUrl } from "./env";
 import { Trailer } from "./trailer";
 
 export const TrailerContainer = (props: { id: string }) => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
-        var url = `https://www.uploadr.co.uk/imdbfetch/public/outputs/${props.id}trailer.json`;
+        var url = `${rootUrl}/${props.id}trailer.json`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BoxOfficeItem, Title } from "../types";
+import { rootUrl } from "./env";
 import { Movie } from "./movie";
 
 const MovieContainer = (props: BoxOfficeItem) => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
-        var url = `https://www.uploadr.co.uk/imdbfetch/public/outputs/${props.id}.json`;
+        var url = `${rootUrl}/${props.id}.json`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())

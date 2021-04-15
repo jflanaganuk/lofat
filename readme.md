@@ -10,13 +10,22 @@ Click for a live example!
 <img src="./images/desktop.png" height="200"/>
 <img src="./images/mobile.png" height="200"/>
 
-### Current Lighthouse Scores (mobile - incognito)
+## Current Lighthouse Scores 
+### Mobile - incognito
 
 <img src="./images/currentScore.png" height="200"/>
 
-## Development steps
+### Desktop - incognito
 
-### Start IMDB Fetcher
+<img src="./images/currentScoreDesktop.png" height="200"/>
+
+## Development steps
+Development has been greatly simplified
+1. If this is the first time using the repo run `npm install`
+2. Run `npm run watch:develop` to start local development
+
+### Server Deployment steps
+If you wish to run this on your own server copy the repo and do the following:
 
 1. Copy `env.json.example` to `env.json`
 2. Add your api key to `env.json`
@@ -27,11 +36,7 @@ Click for a live example!
 ### Serve html files
 
 6. Html and client side js is stored inside `public`
-
-### React Development
-
-7. Copy the current `.json` (from step 5) files into `src/stubs`
-8. Run `npm run watch` to start local development
+7. In the local repo you will need to update the url stored in `env.ts`
 
 # Notes about AWS image params
 

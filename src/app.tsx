@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import { Container } from "./container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Offline } from "./offline";
+import { rootUrl } from "./env";
 
 const App = () => {
     const [response, setResponse] = useState(null);
 
     useEffect(() => {
-        var url = `https://www.uploadr.co.uk/imdbfetch/public/outputs/boxOffice10.json`;
+        var url = `${rootUrl}/boxOffice10.json`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
