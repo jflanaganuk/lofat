@@ -69,3 +69,15 @@ And adding
 Header set Access-Control-Allow-Origin "*"
 ``` 
 to the `.conf` and restarting
+
+# Apache settings for CacheMeIfYouCan
+
+Setting the following in `000-default-le-ssl.conf`
+
+```
+ProxyPreserveHost On
+ProxyPass /ext http://localhost:4000
+ProxyPassReverse /ext http://localhost:4000
+```
+
+Will make it so any requests to `https://www.uploadr.co.uk/ext` are sent to `http://localhost:4000` (Where CacheMeIfYouCan is running)
