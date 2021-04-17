@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { BoxOfficeItem, Title } from "../types";
+import { TmdbMovie, TmdbMovieDetail } from "../types";
 import { rootUrl } from "./env";
 import { Movie } from "./movie";
 
-const MovieContainer = (props: BoxOfficeItem) => {
-    const [response, setResponse] = useState(null);
+const MovieContainer = (props: TmdbMovie & { rank: number }) => {
+    const [response, setResponse] = useState<TmdbMovieDetail | null>(null);
 
     useEffect(() => {
-        var url = `${rootUrl}/${props.id}.json`;
+        var url = `${rootUrl}/movie/${props.id}`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
-            .then((data) => {
-                if (data.errorMessage == "") {
+            .then((data: TmdbMovieDetail) => {
+                if (!data.status_message) {
                     setResponse(data);
                 } else {
                     console.error("Error with returned data:");

@@ -4,17 +4,19 @@ import { Container } from "./container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Offline } from "./offline";
 import { rootUrl } from "./env";
+import { TmdbPopularMovies } from "../types";
 
 const App = () => {
-    const [response, setResponse] = useState(null);
+    const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
 
     useEffect(() => {
-        var url = `${rootUrl}/boxOffice10.json`;
+        var url = `${rootUrl}/movie/popular`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
-            .then((data) => {
-                if (data.errorMessage == "") {
+            .then((data: TmdbPopularMovies) => {
+                console.log(data);
+                if (!data.status_message) {
                     setResponse(data);
                 } else {
                     console.error("Error with returned data:");

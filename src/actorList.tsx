@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ActorType } from "../types";
+import { TmdbMovieCredits } from "../types";
 import { Actor } from "./actor";
 
 import "./actorList.scss";
 
-const ActorList = (props: { actorList: ActorType[] }) => {
+const ActorList = (props: { actorList: TmdbMovieCredits | null }) => {
     const actorRef = useRef<HTMLDivElement>(null);
     const [scroll, setScroll] = useState(1);
+    const [actorMax, setActorMax] = useState(10);
     useEffect(() => {
         /*
          *  For some reason react does not like showing the buttons
@@ -51,11 +52,12 @@ const ActorList = (props: { actorList: ActorType[] }) => {
                     </button>
                     <button
                         className="actorScrollRight"
-                        onClick={() =>
+                        onClick={() => {
                             setScroll(
                                 scroll + (actorRef.current?.clientWidth || 0)
-                            )
-                        }
+                            );
+                            setActorMax(props.actorList?.cast.length || 0);
+                        }}
                         disabled={scroll >= length}
                     >
                         {">"}
@@ -67,18 +69,19 @@ const ActorList = (props: { actorList: ActorType[] }) => {
                 ref={actorRef}
                 onScroll={(e: any) => setScroll(e.target.scrollLeft)}
             >
-                {props.actorList.map((actor, index) => {
-                    return (
-                        <Actor
-                            name={actor.name}
-                            id={actor.id}
-                            image={actor.image}
-                            asCharacter={actor.asCharacter}
-                            key={actor.id}
-                            offset={index}
-                        />
-                    );
-                })}
+                {props.actorList &&
+                    props.actorList.cast
+                        .slice(0, actorMax)
+                        .map((actor, index) => {
+                            return (
+                                <Actor
+                                    profile_path={actor.profile_path}
+                                    key={actor.id}
+                                    offset={index}
+                                    {...actor}
+                                />
+                            );
+                        })}
             </div>
         </div>
     );

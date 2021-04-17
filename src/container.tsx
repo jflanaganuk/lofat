@@ -1,51 +1,50 @@
 import React, { lazy, Suspense } from "react";
-import { BoxOfficeItem } from "../types";
+import { TmdbMovie, TmdbPopularMovies } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
 import { GithubLink } from "./githubLink";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { Attribution } from "./attribution";
 
 const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
 type ContainerProps = {
-    movies: { items: BoxOfficeItem[] } | null;
+    movies: TmdbPopularMovies | null;
 };
 
 export const Container = (props: ContainerProps) => {
     if (!props.movies) return null;
     const { id } = useParams<{ id: string }>() || "";
-    const currentPos = findObjectPositionInArray(props.movies.items, id);
-    const item = props.movies.items[currentPos];
+    const currentPos = findObjectPositionInArray(props.movies.results, id);
+    const item = props.movies.results[currentPos];
+    console.log(currentPos, props.movies.results, id);
     if (currentPos === -1) return <Fallback id={id} />;
     return (
         <div className={"main"}>
             <RoutedControls id={id} movies={props.movies} />
             <Suspense fallback={<p>Loading...</p>}>
                 <MovieContainerLazy
-                    id={item.id}
-                    image={item.image}
-                    title={item.title}
-                    gross={item.gross}
-                    rank={item.rank}
-                    weekend={item.weekend}
-                    weeks={item.weeks}
+                    poster_path={item.poster_path}
+                    rank={currentPos + 1}
+                    {...item}
                 />
             </Suspense>
             <GithubLink />
+            <Attribution />
         </div>
     );
 };
 
 type RoutedControlsProps = {
     id: string;
-    movies: { items: BoxOfficeItem[] };
+    movies: TmdbPopularMovies;
 };
 
 const RoutedControls = (props: RoutedControlsProps) => {
     const currentPosition = findObjectPositionInArray(
-        props.movies.items,
+        props.movies.results,
         props.id
     );
     return (
@@ -53,15 +52,15 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition > 0 && (
                 <Link
                     className="previous"
-                    to={`${props.movies.items[currentPosition - 1].id}`}
+                    to={`${props.movies.results[currentPosition - 1].id}`}
                 >
                     {"<"}
                 </Link>
             )}
-            {currentPosition < props.movies.items.length - 1 && (
+            {currentPosition < props.movies.results.length - 1 && (
                 <Link
                     className="next"
-                    to={`${props.movies.items[currentPosition + 1].id}`}
+                    to={`${props.movies.results[currentPosition + 1].id}`}
                 >
                     {">"}
                 </Link>
@@ -71,17 +70,18 @@ const RoutedControls = (props: RoutedControlsProps) => {
 };
 
 function findObjectPositionInArray(
-    inputArray: BoxOfficeItem[],
+    inputArray: TmdbMovie[],
     itemToFind: string | number | boolean
 ): number {
     if (!itemToFind) return 0;
-    return inputArray.findIndex((element) => element.id === itemToFind);
+    return inputArray.findIndex((element) => element.id === Number(itemToFind));
 }
 
 const Fallback = (props) => {
     return (
         <div className={"main"}>
             <Suspense fallback={<p>Loading...</p>}>
+                {/* @ts-ignore */}
                 <MovieContainerLazy id={props.id} />
             </Suspense>
             <GithubLink />

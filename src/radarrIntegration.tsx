@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Title } from "../types";
+import { TmdbMovieDetail } from "../types";
 // @ts-ignore
 import wrench from "./wrench.svg";
 
 import "./radarrIntegration.scss";
 
-export const RadarrIntegration = (props: { movie: Title }) => {
+export const RadarrIntegration = (props: { movie: TmdbMovieDetail }) => {
     const url = localStorage.getItem("radarrUrl");
     if (!url) return <RadarrSetup />;
     return (
         <>
             <RadarrSetup />
             <a
-                href={`http://${url}/add/new?term=${props.movie.title}`}
+                href={`http://${url}/add/new?term=tmdb%3A${props.movie.id}`}
                 target="_blank"
                 rel="noopener"
             >
@@ -24,7 +24,7 @@ export const RadarrIntegration = (props: { movie: Title }) => {
     );
 };
 
-const RadarrSetup = (props) => {
+const RadarrSetup = () => {
     const [shown, setShown] = useState(false);
     return (
         <>

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./imageOpti.scss";
 
 type ImageOptiProps = {
     smallImg: string;
     fullImg: string;
-    id: string;
+    id: string | number | null;
     title: string;
     loadingImg?: string;
 };
@@ -13,7 +13,7 @@ type ImageOptiProps = {
 export const ImageOpti = (props: ImageOptiProps) => {
     return (
         <a
-            href={`https://www.imdb.com/title/${props.id}`}
+            href={props.id ? `https://www.imdb.com/title/${props.id}` : "#"}
             target="_blank"
             rel="noopener"
             className="movieLink"

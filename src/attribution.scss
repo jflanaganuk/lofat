@@ -1,0 +1,30 @@
+.attributionContainer {
+    position: fixed;
+    left: 0;
+    bottom: initial;
+    top: 0;
+    background-color: #0d253f;
+    color: white;
+    display: flex;
+    z-index: 9999;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    @media only screen and (min-width: 750px) {
+        border-radius: 0 20px 0 0;
+        width: initial;
+        padding: 0 20px;
+        justify-content: initial;
+        &:hover {
+            background-color: #01b4e4;
+        }
+        bottom: 0;
+        top: initial;
+    }
+}
+
+.attributionImg {
+    width: 100px;
+    margin-right: 10px;
+}

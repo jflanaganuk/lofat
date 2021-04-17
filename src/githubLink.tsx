@@ -2,7 +2,7 @@ import React from "react";
 
 import "./githubLink.scss";
 
-export const GithubLink = (props) => {
+export const GithubLink = () => {
     return (
         <div className="githubContainer">
             <p>

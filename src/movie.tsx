@@ -1,40 +1,52 @@
 import React, { lazy, Suspense } from "react";
-import { BoxOfficeItem, Title } from "../types";
+import { TmdbMovie, TmdbMovieDetail } from "../types";
+import { imageGlobalProps } from "./env";
 import { ImageOpti } from "./imageOpti";
 
 import "./movie.scss";
 import { RadarrIntegration } from "./radarrIntegration";
 import { TrailerContainer } from "./trailerContainer";
 
-const ActorListLazy = lazy(() => import("./actorList"));
+const ActorListLazy = lazy(() => import("./actorListContainer"));
 
-export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
+export const Movie = (
+    props: TmdbMovie & { movie: TmdbMovieDetail | null; rank: number }
+) => {
     if (!props.movie) return null;
-    const image = getRealPicture(props.image, props.movie.image);
+    const image = getRealPicture(props.poster_path, props.movie.poster_path);
     return (
         <>
             <div
                 className={"subContainer"}
                 style={{
-                    backgroundImage: `url(${convertAWSImage(
+                    backgroundImage: `url(${getFullImagePath(
                         image,
-                        50
-                    )}), url(${convertAWSImage(image, 8)})`,
+                        imageGlobalProps.poster_sizes[6]
+                    )}), url(${getFullImagePath(
+                        image,
+                        imageGlobalProps.poster_sizes[0]
+                    )})`,
                 }}
             />
             <div className={"container"}>
                 <h2>{props.movie.title}</h2>
                 <div className="horizontal">
-                    {props.movie.fullTitle && <p>{props.movie.fullTitle}</p>}
-                    {props.movie.originalTitle && (
-                        <p>{`-(${props.movie.originalTitle})`}</p>
+                    {props.movie.title && <p>{props.movie.title}</p>}
+                    {props.movie.original_title && (
+                        <p>{`-(${props.movie.original_title})`}</p>
                     )}
                 </div>
                 <div className={"imageAndInfo"}>
                     <ImageOpti
-                        smallImg={convertAWSImage(image, 8)}
-                        fullImg={convertAWSImage(image, 1024)}
-                        id={props.id}
+                        smallImg={getFullImagePath(
+                            image,
+                            imageGlobalProps.poster_sizes[0]
+                        )}
+                        fullImg={getFullImagePath(
+                            image,
+                            imageGlobalProps.poster_sizes[6]
+                        )}
+                        id={props.movie.imdb_id}
                         title={props.movie.title}
                     />
                     <div className="vertical">
@@ -49,53 +61,61 @@ export const Movie = (props: BoxOfficeItem & { movie: Title | null }) => {
                                 <tr>
                                     <td>Release Date</td>
                                     <td>
-                                        {formatDate(props.movie.releaseDate)}
+                                        {formatDate(props.movie.release_date)}
                                     </td>
                                 </tr>
-                                {props.weeks && (
-                                    <tr>
-                                        <td>Weeks in Box Office</td>
-                                        <td>{props.weeks}</td>
-                                    </tr>
-                                )}
-                                {props.weekend && (
-                                    <tr>
-                                        <td>Opening Weekend</td>
-                                        <td>{props.weekend}</td>
-                                    </tr>
-                                )}
                                 <tr>
-                                    <td>Genre</td>
-                                    <td>{props.movie.genres}</td>
+                                    <td>Status</td>
+                                    <td>{props.movie.status}</td>
                                 </tr>
                                 <tr>
-                                    <td>IMDb Rating</td>
+                                    <td>Total Revenue</td>
                                     <td>
-                                        {props.movie.imDbRating
-                                            ? `${props.movie.imDbRating}/10`
+                                        $
+                                        {Number(
+                                            props.movie.revenue
+                                        ).toLocaleString()}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Genres</td>
+                                    <td>
+                                        {props.movie.genres.reduce(
+                                            (acc, genre) => {
+                                                return `${acc}${genre.name} `;
+                                            },
+                                            ""
+                                        )}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rating</td>
+                                    <td>
+                                        {props.movie.vote_average
+                                            ? `${props.movie.vote_average}/10`
                                             : "Not Yet Rated"}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>MetaCritic Rating</td>
+                                    <td>Rating Count</td>
                                     <td>
-                                        {props.movie.metacriticRating
-                                            ? `${props.movie.metacriticRating}/100`
+                                        {props.movie.vote_count
+                                            ? `${props.movie.vote_count}`
                                             : "Not Yet Rated"}
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p className="plot">{props.movie.plot}</p>
+                        <p className="plot">{props.movie.overview}</p>
                     </div>
                 </div>
                 <div className="radarrContainer">
                     <RadarrIntegration movie={props.movie} />
                 </div>
                 <TrailerContainer id={props.movie.id} />
-                {props.movie.actorList && (
+                {props.movie.id && (
                     <Suspense fallback={<p>Loading...</p>}>
-                        <ActorListLazy actorList={props.movie.actorList} />
+                        <ActorListLazy id={props.movie.id} />
                     </Suspense>
                 )}
             </div>
@@ -112,6 +132,10 @@ export function formatDate(input: string): string {
 export function getFullSizeImg(input: string): string {
     const cutString = input.split("@")[0];
     return `${cutString}@.jpg`;
+}
+
+export function getFullImagePath(input: string, resolution: string): string {
+    return `${imageGlobalProps.secure_base_url}${resolution}${input}`;
 }
 
 export function convertAWSImage(input: string, resolution: number = 1000) {
@@ -134,7 +158,7 @@ export function getRatio(input: string): number {
 }
 
 const getRealPicture = (
-    propsPic: string | undefined,
+    propsPic: string | null,
     propsMoviePic: string
 ): string => {
     const noPicString = "nopicture.jpg";

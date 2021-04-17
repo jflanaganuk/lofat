@@ -1,5 +1,3 @@
-import { Settings } from "http2";
-
 export type EnvType = {
     key: string;
 };
@@ -128,4 +126,107 @@ export type YouTubeTrailer = {
     videoId: string;
     videoUrl: string;
     errorMessage: string;
+}
+
+export type TmdbMovie = {
+    adult: boolean;
+    backdrop_path: string | null;
+    genre_ids: number[];
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string | null;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+}
+
+export type TmdbPopularMovies = {
+    page: number;
+    results: TmdbMovie[];
+    total_pages: number;
+    total_results: number;
+    status_message?: string;
+}
+
+export type TmdbMovieDetail = {
+    adult: boolean;
+    backdrop_path: string | null;
+    belongs_to_collection: {} | null;
+    budget: number;
+    genres: { id: number; name: string; }[];
+    homepage: string | null;
+    id: number;
+    imdb_id: string | null;
+    original_language: string;
+    original_title: string;
+    overview: string | null;
+    popularity: number;
+    poster_path: string;
+    production_companies: { name: string; id: number; logo_path: string | null; origin_country: string; }[];
+    production_countries: { iso_3166_1: string; name: string }[];
+    release_date: string;
+    revenue: number;
+    runtime: number;
+    spoken_languages: { iso_639_1: string; name: string; }[];
+    status: string;
+    tagline: string | null;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+    status_message?: string;
+}
+
+export type TmdbMovieVideos = {
+    id: number;
+    results: {
+        id: string;
+        iso_639_1: string;
+        iso_3166_1: string;
+        key: string;
+        name: string;
+        site: string;
+        size: number;
+        type: string;
+    }[];
+    status_message?: string;
+}
+
+export type TmdbMovieCredits = {
+    id: number;
+    cast: TmdbMovieCast[];
+    crew: {
+        adult: boolean;
+        gender: number | null;
+        id: number;
+        known_for_department: string;
+        name: string;
+        original_name: string;
+        popularity: number;
+        profile_path: string | null;
+        credit_id: string;
+        department: string;
+        job: string;
+    }[];
+    status_message?: string;
+}
+
+export type TmdbMovieCast = {
+        adult: boolean;
+        gender: number | null;
+        id: number;
+        known_for_department: string;
+        name: string;
+        original_name: string;
+        popularity: number;
+        profile_path: string | null;
+        cast_id: number;
+        character: string;
+        credit_id: string;
+        order: number;
 }
