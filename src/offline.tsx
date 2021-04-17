@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Offline = (props) => {
+export const Offline = () => {
     return (
         <div>
             <h2>Offline Page</h2>

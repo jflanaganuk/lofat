@@ -6,7 +6,7 @@ app.use('/imdbfetch', express.static(__dirname + '/'));
 app.use('/imdbfetch/*', express.static(__dirname + '/index.html'));
 app.use('/', express.static(__dirname + '/'));
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
     res.sendFile(`${__dirname}/index.html`)
 })
 

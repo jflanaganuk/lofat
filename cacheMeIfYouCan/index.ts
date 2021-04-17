@@ -23,7 +23,7 @@ app.use(cors());
 
 app.use("/", express.static(__dirname + "/"));
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
@@ -38,7 +38,7 @@ app.get("/api*", (req, res) => {
     const safeQueries = convertToSafeFileName(removeApiKey(query));
     fs.stat(
         `${__dirname}/cached/${safeParams}${safeQueries}.json`,
-        (err, stat) => {
+        (err, _stat) => {
             if (err === null) {
                 textLog(
                     "log",
