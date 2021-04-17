@@ -1,1 +1,7 @@
 - Add swipe gestures to navigate
+- Tidy up settings pane (make it easier and more obvious how to close etc.)
+- Investigate extra stuff we can do now we have migrated to tmdb!!
+    - TV Shows?
+    - Search?
+- Investigate if we could host the app through node like how CacheMeIfYouCan is working (using same principles)?
+    - Would make a lot of things easier going forward, routing etc.
