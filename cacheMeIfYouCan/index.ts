@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 import fetch from "node-fetch";
 import del from "del";
+import cors from 'cors';
 
 const app = express();
 export type EnvType = {
@@ -17,6 +18,8 @@ const cacheSeconds = env.cache_seconds || 1000;
 interface ParsedQs {
     [key: string]: undefined | string | string[] | ParsedQs | ParsedQs[];
 }
+
+app.use(cors());
 
 app.use("/", express.static(__dirname + "/"));
 
