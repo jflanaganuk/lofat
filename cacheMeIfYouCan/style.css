@@ -21,6 +21,7 @@ html body {
     color: #34495e;
     border-radius: 8px;
     padding: 4px;
+    overflow-y: scroll;
 }
 
 a {
