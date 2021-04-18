@@ -14,8 +14,8 @@
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = 'precache-v1.0.60';
-const RUNTIME = 'runtime-v1.0.60';
+const PRECACHE = 'precache-v1.0.61';
+const RUNTIME = 'runtime-v1.0.61';
 
 const offlineUrl = "./offline";
 
@@ -57,7 +57,7 @@ self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
   if (event.request.url.startsWith(self.location.origin)) {
     // for uploadr specific files (eg. the boxOffice10, we should try to fetch new files and fallback if failed)
-    if (event.request.url.includes('boxOffice10')) {
+    if (event.request.url.includes('boxOffice10') || event.request.url.includes('image.tmdb')) {
       event.respondWith(
         fetch(event.request).then(response => {
           return caches.open(RUNTIME).then(cache => {
