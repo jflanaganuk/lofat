@@ -23,7 +23,9 @@
     &:hover {
         box-shadow: inset 0px 0px 0px 3px #f1c40f, 0px 0px 0px 3px #f1c40f;
     }
-    animation: fadeIn 1000ms ease-out;
+    &.fadeIn {
+        animation: fadeIn 1000ms ease-out;
+    }
 }
 
 @keyframes fadeIn {

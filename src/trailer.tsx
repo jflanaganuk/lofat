@@ -9,7 +9,7 @@ export const Trailer = (props: { trailer: TmdbMovieVideos | null }) => {
     const [currentTrailer, setCurrentTrailer] = useState(0);
     useEffect(() => {
         setCurrentTrailer(0);
-    }, [props.trailer.results])
+    }, [props.trailer.results]);
     return (
         <div className="trailer">
             {props.trailer.results.length > 0 && (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./imageOpti.scss";
 
@@ -11,12 +11,21 @@ type ImageOptiProps = {
 };
 
 export const ImageOpti = (props: ImageOptiProps) => {
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        setLoaded(true);
+    }, [props.id]);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoaded(false);
+        }, 1000);
+    }, [loaded]);
     return (
         <a
             href={props.id ? `https://www.imdb.com/title/${props.id}` : "#"}
             target="_blank"
             rel="noopener"
-            className="movieLink"
+            className={`movieLink ${loaded && "fadeIn"}`}
             style={{
                 backgroundImage: `url(${props.fullImg}), url(${props.smallImg})`,
             }}
