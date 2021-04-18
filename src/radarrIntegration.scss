@@ -10,7 +10,7 @@
     z-index: 9999;
     a {
         text-decoration: none;
-        z-index: 9999;
+        z-index: 9998;
     }
 }
 
@@ -23,7 +23,7 @@
     border-radius: 50px;
     font-size: 0.95rem;
     padding: 0.5rem 1rem;
-    z-index: 9999;
+    z-index: 9998;
     margin-right: 10px;
     &:hover {
         cursor: pointer;
@@ -51,7 +51,7 @@
     border-radius: 50px;
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    z-index: 9999;
+    z-index: 10000;
     img {
         width: 20px;
     }
@@ -59,6 +59,13 @@
         cursor: pointer;
         background-color: #bdc3c7;
     }
+    &.close {
+        background-color: #c0392b;
+        p {
+            width: 20px;
+        }
+    }
+    transition: background-color 1s;
 }
 
 .big {
@@ -74,7 +81,7 @@
 
 .formBackground {
     position: fixed;
-    background-color: #2c3e50cc;
+    background-color: #2c3e50;
     top: 0;
     bottom: 0;
     left: 0;
@@ -82,7 +89,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9900;
+    z-index: 9999;
     padding: 20px;
     h1 {
         margin: 0;

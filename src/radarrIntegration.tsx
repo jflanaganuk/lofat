@@ -29,11 +29,23 @@ const RadarrSetup = () => {
     return (
         <>
             <button
-                className="setup"
-                onClick={() => setShown(!shown)}
+                className={`setup ${shown && "close"}`}
+                onClick={() => {
+                    setShown(!shown);
+                    !shown
+                        ? (function () {
+                              document.body.style.position = "fixed";
+                              document.body.style.top = `-${window.scrollY}px`;
+                          })()
+                        : (function () {
+                              document.body.style.position = "";
+                              document.body.style.top = "";
+                          })();
+                }}
                 aria-label="setup radarr icon"
             >
-                <img src={wrench} alt="wrench icon" />
+                {!shown && <img src={wrench} alt="wrench icon" />}
+                {shown && <p>X</p>}
             </button>
             {shown && <RadarrForm setShown={setShown} />}
         </>

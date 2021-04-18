@@ -84,6 +84,7 @@ const Fallback = (props) => {
                 <MovieContainerLazy id={props.id} />
             </Suspense>
             <GithubLink />
+            <Attribution />
         </div>
     );
 };
