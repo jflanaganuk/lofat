@@ -35,6 +35,19 @@
     margin: 10px 0;
 }
 
+.vertical {
+    & table {
+        width: 100%;
+        margin-top: 20px;
+        padding: 0 30px;
+        @media only screen and (min-width: 750px) {
+            width: initial;
+            margin-top: initial;
+            padding: initial;
+        }
+    }
+}
+
 .imageAndInfo {
     display: flex;
     flex-direction: column;

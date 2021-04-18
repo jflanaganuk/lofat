@@ -31,10 +31,7 @@ export const Movie = (
             <div className={"container"}>
                 <h2>{props.movie.title}</h2>
                 <div className="horizontal">
-                    {props.movie.title && <p>{props.movie.title}</p>}
-                    {props.movie.original_title && (
-                        <p>{`-(${props.movie.original_title})`}</p>
-                    )}
+                    <p>{props.movie.tagline || "\u00A0"}</p>
                 </div>
                 <div className={"imageAndInfo"}>
                     <ImageOpti
@@ -109,15 +106,15 @@ export const Movie = (
                         <p className="plot">{props.movie.overview}</p>
                     </div>
                 </div>
-                <div className="radarrContainer">
-                    <RadarrIntegration movie={props.movie} />
-                </div>
                 <TrailerContainer id={props.movie.id} />
                 {props.movie.id && (
                     <Suspense fallback={<p>Loading...</p>}>
                         <ActorListLazy id={props.movie.id} />
                     </Suspense>
                 )}
+                <div className="radarrContainer">
+                    <RadarrIntegration movie={props.movie} />
+                </div>
             </div>
         </>
     );
