@@ -15,7 +15,7 @@ export const Attribution = () => {
                 src="images/tmdb.svg"
                 alt="Logo for The Movie Database"
             />
-            <p>Data provided by themoviedb.org</p>
+            <small>Data provided by The Movie Database</small>
         </a>
     );
 };

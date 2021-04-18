@@ -1,5 +1,9 @@
 - Add swipe gestures to navigate
-- Tidy up settings pane (make it easier and more obvious how to close etc.)
+- Add a mobile menu
+    - Home (Nav menu)
+    - Search
+    - settings
+    - Add to radarr
 - Investigate extra stuff we can do now we have migrated to tmdb!!
     - TV Shows?
     - Search?
