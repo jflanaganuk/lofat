@@ -15,7 +15,6 @@ const App = () => {
         fetch(req)
             .then((response) => response.json())
             .then((data: TmdbPopularMovies) => {
-                console.log(data);
                 if (!data.status_message) {
                     setResponse(data);
                 } else {

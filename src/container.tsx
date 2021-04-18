@@ -19,7 +19,6 @@ export const Container = (props: ContainerProps) => {
     const { id } = useParams<{ id: string }>() || "";
     const currentPos = findObjectPositionInArray(props.movies.results, id);
     const item = props.movies.results[currentPos];
-    console.log(currentPos, props.movies.results, id);
     if (currentPos === -1) return <Fallback id={id} />;
     return (
         <div className={"main"}>
