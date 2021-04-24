@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Container } from "./container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Offline } from "./offline";
 import { rootUrl } from "./env";
 import { TmdbPopularMovies } from "../types";
 import { Search } from "./search";
@@ -10,6 +9,7 @@ import { Menu } from "./menu";
 import { Home } from "./home";
 import { Attribution } from "./attribution";
 import { GithubLink } from "./githubLink";
+import { NotFound } from "./404";
 
 const App = () => {
     const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
@@ -34,9 +34,6 @@ const App = () => {
         <Router basename="/imdbfetch">
             <Menu />
             <Switch>
-                <Route exact path="/offline">
-                    <Offline />
-                </Route>
                 <Route exact path="/search">
                     <Search />
                 </Route>
@@ -52,7 +49,7 @@ const App = () => {
                 <Route exact path="/">
                     <Home />
                 </Route>
-                <p>Not found</p>
+                <NotFound />
             </Switch>
             <Attribution />
             <GithubLink />

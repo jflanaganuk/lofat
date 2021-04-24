@@ -37,12 +37,12 @@
     text-decoration: none;
     cursor: pointer;
     position: relative;
-            height: 142px;
+    height: 142px;
     &:hover {
         background-color: #2980b9;
     }
     img {
-            width: 92px;
+        width: 92px;
     }
     @media only screen and (min-width: 750px) {
         width: 400px;

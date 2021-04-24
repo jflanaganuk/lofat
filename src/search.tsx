@@ -4,7 +4,7 @@ import { TmdbMovieSearchResult, TmdbMovieSearchResults } from "../types";
 import { imageGlobalProps, rootUrl } from "./env";
 import { formatDate, getFullImagePath } from "./movie";
 
-import { fallbackUrl } from './actor';
+import { fallbackUrl } from "./actor";
 
 import "./search.scss";
 
@@ -90,14 +90,32 @@ function sanitiseVal(input: string): string {
 const SearchResult = (props: { result: TmdbMovieSearchResult }) => {
     const { result } = props;
     return (
-        <Link key={result.id} className="searchResult" to={`/movie/${result.id}`}>
-            {result.poster_path && <img src={getFullImagePath(result.poster_path || "", imageGlobalProps.poster_sizes[0])} alt={`poster of ${result.title}`}/>}
-            {!result.poster_path && <img src={fallbackUrl} alt="no image found"/>}
+        <Link
+            key={result.id}
+            className="searchResult"
+            to={`/movie/${result.id}`}
+        >
+            {result.poster_path && (
+                <img
+                    src={getFullImagePath(
+                        result.poster_path || "",
+                        imageGlobalProps.poster_sizes[0]
+                    )}
+                    alt={`poster of ${result.title}`}
+                />
+            )}
+            {!result.poster_path && (
+                <img src={fallbackUrl} alt="no image found" />
+            )}
             <div className="searchResultVertical">
-                {result.title.length > 15 && <h2>{result.title.substring(0, 15)}...</h2>}
+                {result.title.length > 15 && (
+                    <h2>{result.title.substring(0, 15)}...</h2>
+                )}
                 {result.title.length <= 15 && <h2>{result.title}</h2>}
                 <small>{formatDate(result.release_date)}</small>
-                {result.overview.length > 60 && <p>{result.overview.substring(0, 60)}...</p>}
+                {result.overview.length > 60 && (
+                    <p>{result.overview.substring(0, 60)}...</p>
+                )}
                 {result.overview.length <= 60 && <p>{result.overview}</p>}
             </div>
         </Link>
