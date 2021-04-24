@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { Container } from "./container";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Offline } from "./offline";
 import { rootUrl } from "./env";
 import { TmdbPopularMovies } from "../types";
+import { Search } from "./search";
+import { Menu } from "./menu";
+import { Home } from "./home";
+import { Attribution } from "./attribution";
+import { GithubLink } from "./githubLink";
+import { NotFound } from "./404";
 
 const App = () => {
     const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
@@ -27,20 +32,27 @@ const App = () => {
 
     return (
         <Router basename="/imdbfetch">
+            <Menu />
             <Switch>
-                <Route exact path="/offline">
-                    <Offline />
+                <Route exact path="/search">
+                    <Search />
                 </Route>
-                <Route exact path="/">
+                <Route exact path="/movie">
+                    <Container movies={response} />
+                </Route>
+                <Route path="/movie/:id">
                     <Container movies={response} />
                 </Route>
                 <Route exact path="/index.html">
-                    <Container movies={response} />
+                    <Home />
                 </Route>
-                <Route path="/:id">
-                    <Container movies={response} />
+                <Route exact path="/">
+                    <Home />
                 </Route>
+                <NotFound />
             </Switch>
+            <Attribution />
+            <GithubLink />
         </Router>
     );
 };
