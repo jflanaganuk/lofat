@@ -24,9 +24,15 @@
         bottom: 0;
         top: initial;
     }
+    @media only screen and (max-width: 350px) {
+        padding: 10px 0;
+    }
 }
 
 .attributionImg {
     width: 100px;
     margin-right: 10px;
+    @media only screen and (max-width: 350px) {
+        display: none;
+    }
 }

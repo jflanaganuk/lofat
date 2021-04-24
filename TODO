@@ -1,11 +1,15 @@
 - Add swipe gestures to navigate
-- Add a mobile menu
-    - Home (Nav menu)
-    - Search
-    - settings
-    - Add to radarr
 - Investigate extra stuff we can do now we have migrated to tmdb!!
     - TV Shows?
-    - Search?
 - Investigate if we could host the app through node like how CacheMeIfYouCan is working (using same principles)?
     - Would make a lot of things easier going forward, routing etc.
+    - imdbfetch2 is the start of this, not much progress so far
+- Add 404 page
+    - expand it out better
+    - same for offline page
+- Build home page
+    - make it different to lists
+
+- Desktop CSS needs reworking, add a limiter to horizontal width and increase content on page (so scrolling returns)
+    - Left and right arrows seem odd on desktop currently
+- Add maintenance page?

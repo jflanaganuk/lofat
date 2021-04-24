@@ -3,10 +3,8 @@ import { TmdbMovie, TmdbPopularMovies } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
-import { GithubLink } from "./githubLink";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Attribution } from "./attribution";
 
 const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
@@ -30,8 +28,6 @@ export const Container = (props: ContainerProps) => {
                     {...item}
                 />
             </Suspense>
-            <GithubLink />
-            <Attribution />
         </div>
     );
 };
@@ -83,8 +79,6 @@ const Fallback = (props) => {
                 {/* @ts-ignore */}
                 <MovieContainerLazy id={props.id} />
             </Suspense>
-            <GithubLink />
-            <Attribution />
         </div>
     );
 };

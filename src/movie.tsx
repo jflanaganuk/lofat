@@ -112,9 +112,7 @@ export const Movie = (
                         <ActorListLazy id={props.movie.id} />
                     </Suspense>
                 )}
-                <div className="radarrContainer">
-                    <RadarrIntegration movie={props.movie} />
-                </div>
+                <RadarrIntegration movie={props.movie} />
             </div>
         </>
     );
