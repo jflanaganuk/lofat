@@ -9,8 +9,9 @@
     "build": "webpack",
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "watch:develop": "npm run watch & ts-node serve.ts",
-    "fetch": "ts-node fetcher/index.ts"
+    "watch:develop": "npm run watch & npm run serve",
+    "fetch": "ts-node fetcher/index.ts",
+    "serve": "ts-node serve.ts"
   },
   "keywords": [],
   "author": "",
