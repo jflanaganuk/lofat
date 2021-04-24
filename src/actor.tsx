@@ -5,7 +5,7 @@ import "./actor.scss";
 import { imageGlobalProps } from "./env";
 import { getFullImagePath } from "./movie";
 
-const noImgUrl = "https://imdb-api.com/images/original/nopicture.jpg";
+export const noImgUrl = "https://imdb-api.com/images/original/nopicture.jpg";
 export const fallbackUrl =
     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Tpf5m-KYLPWC3JvjWq5CigAAAA%26pid%3DApi&f=1";
 

@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { TmdbMovie, TmdbMovieDetail } from "../types";
+import { noImgUrl } from "./actor";
 import { imageGlobalProps } from "./env";
 import { ImageOpti } from "./imageOpti";
 
@@ -130,6 +131,7 @@ export function getFullSizeImg(input: string): string {
 }
 
 export function getFullImagePath(input: string, resolution: string): string {
+    if (input === "noImageString") return noImgUrl;
     return `${imageGlobalProps.secure_base_url}${resolution}${input}`;
 }
 
@@ -157,7 +159,8 @@ const getRealPicture = (
     propsMoviePic: string
 ): string => {
     const noPicString = "nopicture.jpg";
-    if (!propsMoviePic.includes(noPicString)) return propsMoviePic;
+    if (propsMoviePic && !propsMoviePic.includes(noPicString))
+        return propsMoviePic;
     if (propsPic && !propsPic.includes(noPicString)) return propsPic;
     return "noImageString";
 };
