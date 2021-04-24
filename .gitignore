@@ -11,3 +11,6 @@ bundle.js.map
 
 cacheMeIfYouCan/env.json
 cacheMeIfYouCan/log.txt
+
+!cypress.js*
+!cypress/**/*
