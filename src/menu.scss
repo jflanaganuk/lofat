@@ -32,8 +32,26 @@
     color: #ecf0f1;
     text-decoration: none;
     cursor: pointer;
-    &:hover {
+    &:active {
         background-color: #2980b9;
+    }
+    @media only screen and (min-width: 750px) {
+        &:hover {
+            background-color: #2980b9;
+        }
+    }
+}
+
+.menuBack {
+    path {
+        fill: #ecf0f1;
+    }
+    padding: 10px;
+    &:active {
+        background-color: #2980b9;
+    }
+    @media only screen and (min-width: 750px) {
+        display: none;
     }
 }
 

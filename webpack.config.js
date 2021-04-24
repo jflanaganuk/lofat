@@ -22,13 +22,17 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 loader: 'file-loader',
                 options: {
                     publicPath: (_url, resourcePath, context) => {
                         return path.relative(context, resourcePath);
                     }
                 }
+            },
+            {
+                test: /\.svg$/,
+                loader: '@svgr/webpack'
             }
         ]
     },
