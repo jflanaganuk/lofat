@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 
 import "./menu.scss";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+// @ts-ignore
+import LeftArrow from "../images/left-arrow.svg";
 
 export const Menu = () => {
+    const history = useHistory();
     const [shown, setShown] = useState(false);
     return (
         <>
             <div className="menuContainer">
+                <LeftArrow
+                    className="menuBack"
+                    onClick={() => {
+                        history.goBack();
+                    }}
+                />
                 <Link to="/" className="menuItem">
                     Home
                 </Link>

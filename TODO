@@ -8,3 +8,5 @@
     - Left and right arrows seem odd on desktop currently
 - Add maintenance page?
 - Investigate /public on apache (eg. package.json visible)
+
+- Rename Imdbfetch to lofat throughout code
