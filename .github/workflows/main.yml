@@ -11,4 +11,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: npm run watch:develop & (sleep 5000 && npm run test)
+          start: npm run test:ci
