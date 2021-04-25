@@ -5,10 +5,17 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    name: Cypress with Artifacts
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          start: npm run test:ci
+          node-version: 12
+      - run: |
+          npm ci
+          npm run test:ci
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
