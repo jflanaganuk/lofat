@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 100vh;
+    overflow-x: scroll;
     a {
         color: #ecf0f1;
     }
@@ -11,6 +12,7 @@
 
 .homeLogo {
     animation: ease 0.3s growrotate;
+    width: 135px;
 }
 
 .homeSub {
