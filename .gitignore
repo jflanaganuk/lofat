@@ -6,6 +6,8 @@ public/outputs/**/*
 bundle.js
 bundle.js.map
 
+.DS_Store
+
 !cacheMeIfYouCan/*.json
 !cacheMeIfYouCan/cached/test.json
 
