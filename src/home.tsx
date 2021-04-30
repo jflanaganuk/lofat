@@ -11,7 +11,7 @@ export const Home = () => {
                 src="./images/lofat_logo.png"
                 alt="lofat logo image"
             />
-            <h2 className="homeSub">List Of Films And Television</h2>
+            <h2 className="homeSub">List Of Films And TV</h2>
             <div className="homeList">
                 <Link to="/movie/">Popular Movies</Link>
                 <Link to="/tv/">Popular TV Shows</Link>
