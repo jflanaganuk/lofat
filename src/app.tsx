@@ -8,9 +8,9 @@ import { Home } from "./home";
 import { Attribution } from "./attribution";
 import { GithubLink } from "./githubLink";
 import { NotFound } from "./404";
+import { TVListContainer } from "./tvListContainer";
 
 const App = () => {
-
     return (
         <Router basename="/imdbfetch">
             <Menu />
@@ -19,10 +19,16 @@ const App = () => {
                     <Search />
                 </Route>
                 <Route exact path="/movie">
-                    <MovieListContainer/>
+                    <MovieListContainer />
+                </Route>
+                <Route exact path="/tv">
+                    <TVListContainer />
                 </Route>
                 <Route path="/movie/:id">
-                    <MovieListContainer/>
+                    <MovieListContainer />
+                </Route>
+                <Route path="/tv/:id">
+                    <TVListContainer />
                 </Route>
                 <Route exact path="/index.html">
                     <Home />

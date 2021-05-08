@@ -4,6 +4,7 @@ const app = express();
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/imdbfetch', express.static(__dirname + '/'));
 app.use('/imdbfetch/movie', express.static(__dirname + '/'));
+app.use('/imdbfetch/tv', express.static(__dirname + '/'));
 app.use('/imdbfetch/*', express.static(__dirname + '/index.html'));
 app.use('/', express.static(__dirname + '/'));
 

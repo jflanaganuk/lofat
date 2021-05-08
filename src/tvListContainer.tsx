@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import { TmdbMovie, TmdbPopularMovies, TmdbTV } from "../types";
+import { TmdbPopularTV } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
@@ -7,21 +7,23 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { rootUrl } from "./env";
 
-const MovieContainerLazy = lazy(() => import("./movieContainer"));
+import { findObjectPositionInArray } from "./movieListContainer";
 
-type MovieContainerProps = {
-    movies: TmdbPopularMovies | null;
+const TVContainerLazy = lazy(() => import("./tvContainer"));
+
+type TVContainerProps = {
+    tv: TmdbPopularTV | null;
 };
 
-export const MovieListContainer = () => {
-    const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
+export const TVListContainer = () => {
+    const [response, setResponse] = useState<TmdbPopularTV | null>(null);
 
     useEffect(() => {
-        var url = `${rootUrl}/movie/popular`;
+        var url = `${rootUrl}/tv/popular`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
-            .then((data: TmdbPopularMovies) => {
+            .then((data: TmdbPopularTV) => {
                 if (!data.status_message) {
                     setResponse(data);
                 } else {
@@ -33,20 +35,20 @@ export const MovieListContainer = () => {
     }, []);
 
     if (!response) return null;
-    return <MovieList movies={response} />;
+    return <TVList tv={response} />;
 };
 
-export const MovieList = (props: MovieContainerProps) => {
-    if (!props.movies) return null;
+export const TVList = (props: TVContainerProps) => {
+    if (!props.tv) return null;
     const { id } = useParams<{ id: string }>() || { id: "" };
-    const currentPos = findObjectPositionInArray(props.movies.results, id);
-    const item = props.movies.results[currentPos];
+    const currentPos = findObjectPositionInArray(props.tv.results, id);
+    const item = props.tv.results[currentPos];
     if (currentPos === -1) return <Fallback id={id} />;
     return (
-        <div className={"main"}>
-            <RoutedControls id={id} movies={props.movies} />
+        <div className="main">
+            <RoutedControls id={id} tv={props.tv} />
             <Suspense fallback={<p>Loading...</p>}>
-                <MovieContainerLazy
+                <TVContainerLazy
                     poster_path={item.poster_path}
                     rank={currentPos + 1}
                     {...item}
@@ -58,12 +60,12 @@ export const MovieList = (props: MovieContainerProps) => {
 
 type RoutedControlsProps = {
     id: string;
-    movies: TmdbPopularMovies;
+    tv: TmdbPopularTV;
 };
 
 const RoutedControls = (props: RoutedControlsProps) => {
     const currentPosition = findObjectPositionInArray(
-        props.movies.results,
+        props.tv.results,
         props.id
     );
     return (
@@ -71,15 +73,15 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition > 0 && (
                 <Link
                     className="previous"
-                    to={`${props.movies.results[currentPosition - 1].id}`}
+                    to={`${props.tv.results[currentPosition - 1].id}`}
                 >
                     {"<"}
                 </Link>
             )}
-            {currentPosition < props.movies.results.length - 1 && (
+            {currentPosition < props.tv.results.length - 1 && (
                 <Link
                     className="next"
-                    to={`${props.movies.results[currentPosition + 1].id}`}
+                    to={`${props.tv.results[currentPosition + 1].id}`}
                 >
                     {">"}
                 </Link>
@@ -88,20 +90,12 @@ const RoutedControls = (props: RoutedControlsProps) => {
     );
 };
 
-export function findObjectPositionInArray(
-    inputArray: TmdbMovie[] | TmdbTV[],
-    itemToFind: string | number | boolean
-): number {
-    if (!itemToFind) return 0;
-    return inputArray.findIndex((element) => element.id === Number(itemToFind));
-}
-
 const Fallback = (props) => {
     return (
-        <div className={"main"}>
+        <div className="main">
             <Suspense fallback={<p>Loading...</p>}>
                 {/* @ts-ignore */}
-                <MovieContainerLazy id={props.id} />
+                <TVContainerLazy id={props.id} />
             </Suspense>
         </div>
     );
