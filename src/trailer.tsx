@@ -22,14 +22,21 @@ export const Trailer = (props: { trailer: TmdbMovieVideos | null }) => {
             )}
             {props.trailer.results.length > 1 && (
                 <div className="trailerButtonContainer">
-                    {props.trailer.results.map((result, index) => {
+                    {props.trailer.results.slice(0, 4).map((result, index) => {
                         return (
                             <button
-                                className="trailerButton"
+                                className={`trailerButton ${
+                                    index === currentTrailer
+                                        ? "trailerButtonActive"
+                                        : ""
+                                }`}
                                 key={result.id}
                                 onClick={() => setCurrentTrailer(index)}
+                                disabled={index === currentTrailer}
                             >
-                                {result.name} - {result.type}
+                                {result.name.length > 30
+                                    ? result.name.substring(0, 30) + "..."
+                                    : result.name}
                             </button>
                         );
                     })}
