@@ -1,4 +1,8 @@
 describe("Go Around the site", () => {
+    it("Clears sw cache before beginning tests", () => {
+        clearSWCache();
+    });
+
     it("Visits the homepage (Desktop)", () => {
         goAroundTheSite();
     });
@@ -8,6 +12,23 @@ describe("Go Around the site", () => {
         goAroundTheSite();
     });
 });
+
+function clearSWCache() {
+    /* Delete Service Worker Caches */
+    self.addEventListener("activate", function (event) {
+        /* @ts-ignore */
+        event.waitUntil(
+            caches.keys().then(function (cacheNames) {
+                /* @ts-ignore */
+                return Promise.all(
+                    cacheNames.map(function (cacheName) {
+                        return caches.delete(cacheName);
+                    })
+                );
+            })
+        );
+    });
+}
 
 function goAroundTheSite() {
     cy.visit("/");

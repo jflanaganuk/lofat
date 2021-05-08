@@ -9,6 +9,7 @@ import { Attribution } from "./attribution";
 import { GithubLink } from "./githubLink";
 import { NotFound } from "./404";
 import { TVListContainer } from "./tvListContainer";
+import { Lists } from "./lists";
 
 const App = () => {
     return (
@@ -29,6 +30,9 @@ const App = () => {
                 </Route>
                 <Route path="/tv/:id">
                     <TVListContainer />
+                </Route>
+                <Route exact path="/lists">
+                    <Lists />
                 </Route>
                 <Route exact path="/index.html">
                     <Home />

@@ -23,7 +23,11 @@ enum Status {
     Error = "Error",
 }
 
-export const Search = () => {
+interface SearchProps {
+    hideTitle?: boolean;
+}
+
+export const Search = (props: SearchProps) => {
     const [status, setStatus] = useState(Status.Idle);
     const [results, setResults] = useState<TmdbMultiSearchResults | null>(null);
 
@@ -63,19 +67,27 @@ export const Search = () => {
     };
 
     const submitRequest = (val: string) => {
-        document.location.search = `query=${val}`;
+        document.location.href = `/imdbfetch/search?query=${val}`;
     };
 
     return (
         <form className="searchContainer" onSubmit={submitForm}>
             <div className="searchSticky">
-                <h2>Search</h2>
+                {!props.hideTitle && <h2>Search</h2>}
                 <input
                     type="text"
                     name="searchInput"
                     id="searchInput"
-                    onBlur={submitInput}
+                    onBlur={(e) => {
+                        if (
+                            e.target.value !== sanitiseVal(val) &&
+                            e.target.value !== ""
+                        ) {
+                            submitInput(e);
+                        }
+                    }}
                     defaultValue={sanitiseVal(val)}
+                    autoFocus={true}
                 />
             </div>
             {status === Status.Pending && <p>Loading...</p>}
