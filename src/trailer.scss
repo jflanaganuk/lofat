@@ -25,14 +25,13 @@
     justify-content: center;
     margin-top: 20px;
     @media only screen and (min-width: 1780px) {
-        flex-direction: column;
+        display: initial;
         height: 380px;
         position: absolute;
         left: 0;
         z-index: 1;
         opacity: 0;
         transition: opacity 1s;
-        flex-wrap: nowrap;
         overflow-y: auto;
         &:hover {
             opacity: 1;
@@ -45,13 +44,25 @@
     border-radius: 4px;
     background-color: #2c3e50;
     color: #ecf0f1;
-    height: 100px;
-    width: 150px;
+    height: 40px;
+    width: 80vw;
     padding: 10px;
     margin: 5px;
     cursor: pointer;
     &:hover {
         background-color: #34495e;
+    }
+    @media only screen and (min-width: 1780px) {
+        display: block;
+        height: 100px;
+        width: 150px;
+    }
+}
+
+.trailerButtonActive {
+    background-color: #2f7dcc;
+    &:hover {
+        background-color: #2f7dcc;
     }
 }
 

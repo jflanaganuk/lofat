@@ -128,13 +128,13 @@ const SearchResult = (props: { result: TmdbMovieSearchResult }) => {
             )}
             <div className="searchResultVertical">
                 {result.title.length > 15 && (
-                    <h2>{result.title.substring(0, 15)}...</h2>
+                    <h2>{result.title.substring(0, 10)}...</h2>
                 )}
                 {result.title.length <= 15 && <h2>{result.title}</h2>}
                 <small>{formatDate(result.release_date)}</small>
                 <MovieSvg className="movieSvg" />
                 {result.overview.length > 60 && (
-                    <p>{result.overview.substring(0, 60)}...</p>
+                    <p>{result.overview.substring(0, 55)}...</p>
                 )}
                 {result.overview.length <= 60 && <p>{result.overview}</p>}
             </div>
@@ -160,13 +160,13 @@ const SearchResultTV = (props: { result: TmdbTVSearchResult }) => {
             )}
             <div className="searchResultVertical">
                 {result.name.length > 15 && (
-                    <h2>{result.name.substring(0, 15)}...</h2>
+                    <h2>{result.name.substring(0, 10)}...</h2>
                 )}
                 {result.name.length <= 15 && <h2>{result.name}</h2>}
                 <small>{formatDate(result.first_air_date)}</small>
                 <TVSvg className="tvSvg" />
                 {result.overview.length > 60 && (
-                    <p>{result.overview.substring(0, 60)}...</p>
+                    <p>{result.overview.substring(0, 55)}...</p>
                 )}
                 {result.overview.length <= 60 && <p>{result.overview}</p>}
             </div>
