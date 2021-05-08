@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { TmdbMovie, TmdbPopularMovies } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { rootUrl } from "./env";
 
 const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
@@ -12,9 +13,31 @@ type ContainerProps = {
     movies: TmdbPopularMovies | null;
 };
 
-export const Container = (props: ContainerProps) => {
+export const MovieListContainer = () => {
+    const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
+
+    useEffect(() => {
+        var url = `${rootUrl}/movie/popular`;
+        var req = new Request(url);
+        fetch(req)
+            .then((response) => response.json())
+            .then((data: TmdbPopularMovies) => {
+                if (!data.status_message) {
+                    setResponse(data);
+                } else {
+                    console.error("Error with returned data:");
+                    console.error(data);
+                }
+            })
+            .catch((e) => console.error(e));
+    }, []);
+
+    return <MovieList movies={response} />
+}
+
+export const MovieList = (props: ContainerProps) => {
     if (!props.movies) return null;
-    const { id } = useParams<{ id: string }>() || "";
+    const { id } = useParams<{ id: string }>() || {id: ""};
     const currentPos = findObjectPositionInArray(props.movies.results, id);
     const item = props.movies.results[currentPos];
     if (currentPos === -1) return <Fallback id={id} />;

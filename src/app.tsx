@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { Container } from "./container";
+import { MovieListContainer } from "./movieListContainer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { rootUrl } from "./env";
-import { TmdbPopularMovies } from "../types";
 import { Search } from "./search";
 import { Menu } from "./menu";
 import { Home } from "./home";
@@ -12,23 +10,6 @@ import { GithubLink } from "./githubLink";
 import { NotFound } from "./404";
 
 const App = () => {
-    const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
-
-    useEffect(() => {
-        var url = `${rootUrl}/movie/popular`;
-        var req = new Request(url);
-        fetch(req)
-            .then((response) => response.json())
-            .then((data: TmdbPopularMovies) => {
-                if (!data.status_message) {
-                    setResponse(data);
-                } else {
-                    console.error("Error with returned data:");
-                    console.error(data);
-                }
-            })
-            .catch((e) => console.error(e));
-    }, []);
 
     return (
         <Router basename="/imdbfetch">
@@ -38,10 +19,10 @@ const App = () => {
                     <Search />
                 </Route>
                 <Route exact path="/movie">
-                    <Container movies={response} />
+                    <MovieListContainer/>
                 </Route>
                 <Route path="/movie/:id">
-                    <Container movies={response} />
+                    <MovieListContainer/>
                 </Route>
                 <Route exact path="/index.html">
                     <Home />
