@@ -13,7 +13,7 @@ export const TV = (
     props: TmdbTV & { tv: TmdbTVDetail | null; rank: number }
 ) => {
     if (!props.tv) return null;
-    const image = getRealPicture(props.poster_path, props.tv.poster_path);
+    const image = getRealPicture(props.poster_path, props.tv.poster_path!);
     return (
         <>
             <div

@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { TmdbMovieSearchResult, TmdbMovieSearchResults } from "../types";
+import {
+    TmdbMovieSearchResult,
+    TmdbTVSearchResult,
+    TmdbMultiSearchResults,
+} from "../types";
 import { imageGlobalProps, rootUrl } from "./env";
 import { formatDate, getFullImagePath } from "./movie";
 
 import { fallbackUrl } from "./actor";
 
 import "./search.scss";
+// @ts-ignore
+import TVSvg from "./tv.svg";
+// @ts-ignore
+import MovieSvg from "./film.svg";
 
 enum Status {
     Idle = "Idle",
@@ -17,17 +25,17 @@ enum Status {
 
 export const Search = () => {
     const [status, setStatus] = useState(Status.Idle);
-    const [results, setResults] = useState<TmdbMovieSearchResults | null>(null);
+    const [results, setResults] = useState<TmdbMultiSearchResults | null>(null);
 
     const val = document.location.search.split("=")[1];
     useEffect(() => {
         if (val) {
             setStatus(Status.Pending);
-            const url = `${rootUrl}/search/movie?query=${val}`;
+            const url = `${rootUrl}/search/multi?query=${val}`;
             const req = new Request(url);
             fetch(req)
                 .then((response) => response.json())
-                .then((data: TmdbMovieSearchResults) => {
+                .then((data: TmdbMultiSearchResults) => {
                     if (!data.status_message) {
                         setStatus(Status.Success);
                         setResults(data);
@@ -74,7 +82,18 @@ export const Search = () => {
             {results && (
                 <div className="searchResultContainer">
                     {results.results.map((result) => {
-                        return <SearchResult result={result} />;
+                        if (result.media_type === "movie")
+                            return (
+                                <SearchResult
+                                    result={result as TmdbMovieSearchResult}
+                                />
+                            );
+                        if (result.media_type === "tv")
+                            return (
+                                <SearchResultTV
+                                    result={result as TmdbTVSearchResult}
+                                />
+                            );
                     })}
                 </div>
             )}
@@ -113,6 +132,39 @@ const SearchResult = (props: { result: TmdbMovieSearchResult }) => {
                 )}
                 {result.title.length <= 15 && <h2>{result.title}</h2>}
                 <small>{formatDate(result.release_date)}</small>
+                <MovieSvg className="movieSvg" />
+                {result.overview.length > 60 && (
+                    <p>{result.overview.substring(0, 60)}...</p>
+                )}
+                {result.overview.length <= 60 && <p>{result.overview}</p>}
+            </div>
+        </Link>
+    );
+};
+
+const SearchResultTV = (props: { result: TmdbTVSearchResult }) => {
+    const { result } = props;
+    return (
+        <Link key={result.id} className="searchResult" to={`/tv/${result.id}`}>
+            {result.poster_path && (
+                <img
+                    src={getFullImagePath(
+                        result.poster_path || "",
+                        imageGlobalProps.poster_sizes[0]
+                    )}
+                    alt={`poster of ${result.name}`}
+                />
+            )}
+            {!result.poster_path && (
+                <img src={fallbackUrl} alt="no image found" />
+            )}
+            <div className="searchResultVertical">
+                {result.name.length > 15 && (
+                    <h2>{result.name.substring(0, 15)}...</h2>
+                )}
+                {result.name.length <= 15 && <h2>{result.name}</h2>}
+                <small>{formatDate(result.first_air_date)}</small>
+                <TVSvg className="tvSvg" />
                 {result.overview.length > 60 && (
                     <p>{result.overview.substring(0, 60)}...</p>
                 )}

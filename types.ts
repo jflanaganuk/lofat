@@ -231,9 +231,9 @@ export type TmdbMovieCast = {
         order: number;
 }
 
-export type TmdbMovieSearchResults = {
+export type TmdbMultiSearchResults = {
     page: number;
-    results: TmdbMovieSearchResult[];
+    results: (TmdbMovieSearchResult | TmdbTVSearchResult)[];
     total_results: number;
     total_pages: number;
     status_message?: string;
@@ -254,6 +254,24 @@ export type TmdbMovieSearchResult = {
     vote_count: number;
     video: boolean;
     vote_average: boolean;
+    media_type: string;
+}
+
+export type TmdbTVSearchResult = {
+    poster_path: string | null;
+    popularity: number;
+    id: number;
+    overview: string;
+    backdrop_path: string | null;
+    vote_average: number;
+    first_air_date: string;
+    origin_country: string;
+    genre_ids: number[];
+    original_language: string;
+    vote_count: number;
+    name: string;
+    original_name: string;
+    media_type: string;
 }
 
 export type TmdbPopularTV = {

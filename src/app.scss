@@ -2,10 +2,9 @@ html body {
     background-color: #2f7dcc;
     color: #ecf0f1;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 50px;
+    margin: 0;
     @media only screen and (min-width: 750px) {
         padding: 0 60px;
-        margin-top: 0;
     }
 }
 
@@ -23,6 +22,10 @@ html body {
     padding: 10px;
     max-width: 1600px;
     margin: auto;
+    margin-top: 50px;
+    @media only screen and (min-width: 750px) {
+        margin-top: 0;
+    }
 }
 
 .controls {
