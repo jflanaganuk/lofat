@@ -11,7 +11,11 @@
     justify-content: space-around;
     z-index: 1;
     @media only screen and (min-width: 750px) {
-        position: initial;
+        top: 0;
+        z-index: 9999;
+        bottom: initial;
+        left: 50vw;
+        transform: translateX(-50%);
         width: 500px;
         margin-top: 0;
         height: 30px;

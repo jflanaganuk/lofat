@@ -1,8 +1,10 @@
 - Add swipe gestures to navigate
 - Investigate extra stuff we can do now we have migrated to tmdb!!
-    - TV Shows?
     - actor pages etc.
-    - Change search to use "omni search"
+
+- Add lists
+
+- Revisit Settings (change to api key method?)
 
 - Desktop CSS needs reworking, add a limiter to horizontal width and increase content on page (so scrolling returns)
     - Left and right arrows seem odd on desktop currently
