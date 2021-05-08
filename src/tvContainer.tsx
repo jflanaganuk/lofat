@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { TmdbMovieVideos } from "../types";
+import { TmdbTV, TmdbTVDetail } from "../types";
 import { rootUrl } from "./env";
-import { Trailer } from "./trailer";
+import { TV } from "./tv";
 
-export const TrailerContainer = (props: {
-    id: string | number;
-    kind: "movie" | "tv";
-}) => {
-    const [response, setResponse] = useState<TmdbMovieVideos | null>(null);
+const TVContainer = (props: TmdbTV & { rank: number }) => {
+    const [response, setResponse] = useState<TmdbTVDetail | null>(null);
 
     useEffect(() => {
-        var url = `${rootUrl}/${props.kind}/${props.id}/videos`;
+        var url = `${rootUrl}/tv/${props.id}`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
-            .then((data: TmdbMovieVideos) => {
+            .then((data: TmdbTVDetail) => {
                 if (!data.status_message) {
                     setResponse(data);
                 } else {
@@ -25,5 +22,7 @@ export const TrailerContainer = (props: {
             .catch((e) => console.error(e));
     }, [props.id]);
 
-    return <Trailer trailer={response} />;
+    return <TV tv={response} {...props} />;
 };
+
+export default TVContainer;

@@ -1,20 +1,44 @@
-import React, { lazy, Suspense } from "react";
-import { TmdbMovie, TmdbPopularMovies } from "../types";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import { TmdbMovie, TmdbPopularMovies, TmdbTV } from "../types";
 
 import "./imports.scss";
 import "./app.scss";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { rootUrl } from "./env";
 
 const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
-type ContainerProps = {
+type MovieContainerProps = {
     movies: TmdbPopularMovies | null;
 };
 
-export const Container = (props: ContainerProps) => {
+export const MovieListContainer = () => {
+    const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
+
+    useEffect(() => {
+        var url = `${rootUrl}/movie/popular`;
+        var req = new Request(url);
+        fetch(req)
+            .then((response) => response.json())
+            .then((data: TmdbPopularMovies) => {
+                if (!data.status_message) {
+                    setResponse(data);
+                } else {
+                    console.error("Error with returned data:");
+                    console.error(data);
+                }
+            })
+            .catch((e) => console.error(e));
+    }, []);
+
+    if (!response) return null;
+    return <MovieList movies={response} />;
+};
+
+export const MovieList = (props: MovieContainerProps) => {
     if (!props.movies) return null;
-    const { id } = useParams<{ id: string }>() || "";
+    const { id } = useParams<{ id: string }>() || { id: "" };
     const currentPos = findObjectPositionInArray(props.movies.results, id);
     const item = props.movies.results[currentPos];
     if (currentPos === -1) return <Fallback id={id} />;
@@ -64,8 +88,8 @@ const RoutedControls = (props: RoutedControlsProps) => {
     );
 };
 
-function findObjectPositionInArray(
-    inputArray: TmdbMovie[],
+export function findObjectPositionInArray(
+    inputArray: TmdbMovie[] | TmdbTV[],
     itemToFind: string | number | boolean
 ): number {
     if (!itemToFind) return 0;
