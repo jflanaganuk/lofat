@@ -3,11 +3,14 @@ import { TmdbMovieCredits } from "../types";
 import ActorList from "./actorList";
 import { rootUrl } from "./env";
 
-const ActorListContainer = (props: { id: string | number }) => {
+const ActorListContainer = (props: {
+    id: string | number;
+    kind: "movie" | "tv";
+}) => {
     const [response, setResponse] = useState<TmdbMovieCredits | null>(null);
 
     useEffect(() => {
-        var url = `${rootUrl}/movie/${props.id}/credits`;
+        var url = `${rootUrl}/${props.kind}/${props.id}/credits`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())

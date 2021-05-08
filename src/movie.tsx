@@ -107,10 +107,10 @@ export const Movie = (
                         <p className="plot">{props.movie.overview}</p>
                     </div>
                 </div>
-                <TrailerContainer id={props.movie.id} />
+                <TrailerContainer id={props.movie.id} kind="movie" />
                 {props.movie.id && (
                     <Suspense fallback={<p>Loading...</p>}>
-                        <ActorListLazy id={props.movie.id} />
+                        <ActorListLazy id={props.movie.id} kind="movie" />
                     </Suspense>
                 )}
                 <RadarrIntegration movie={props.movie} />
@@ -154,7 +154,7 @@ export function getRatio(input: string): number {
     return 1 / Number(ratioString);
 }
 
-const getRealPicture = (
+export const getRealPicture = (
     propsPic: string | null,
     propsMoviePic: string
 ): string => {
