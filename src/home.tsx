@@ -12,7 +12,7 @@ export const Home = () => {
                 alt="lofat logo image"
             />
             <h2 className="homeSub">List Of Films And TV</h2>
-            <div className="homeList">
+            <div className="homeSearch">
                 <Search hideTitle={true} />
             </div>
         </div>

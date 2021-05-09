@@ -9,15 +9,13 @@ import { rootUrl } from "./env";
 
 const MovieContainerLazy = lazy(() => import("./movieContainer"));
 
-type MovieContainerProps = {
-    movies: TmdbPopularMovies | null;
-};
-
 export const MovieListContainer = () => {
     const [response, setResponse] = useState<TmdbPopularMovies | null>(null);
 
+    const listType = document.location.search.split("=")[1] || "popular";
+
     useEffect(() => {
-        var url = `${rootUrl}/movie/popular`;
+        var url = `${rootUrl}/movie/${listType}`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
@@ -33,7 +31,12 @@ export const MovieListContainer = () => {
     }, []);
 
     if (!response) return null;
-    return <MovieList movies={response} />;
+    return <MovieList movies={response} listType={listType} />;
+};
+
+type MovieContainerProps = {
+    movies: TmdbPopularMovies | null;
+    listType: string;
 };
 
 export const MovieList = (props: MovieContainerProps) => {
@@ -44,7 +47,11 @@ export const MovieList = (props: MovieContainerProps) => {
     if (currentPos === -1) return <Fallback id={id} />;
     return (
         <div className={"main"}>
-            <RoutedControls id={id} movies={props.movies} />
+            <RoutedControls
+                id={id}
+                movies={props.movies}
+                listType={props.listType}
+            />
             <Suspense fallback={<p>Loading...</p>}>
                 <MovieContainerLazy
                     poster_path={item.poster_path}
@@ -59,6 +66,7 @@ export const MovieList = (props: MovieContainerProps) => {
 type RoutedControlsProps = {
     id: string;
     movies: TmdbPopularMovies;
+    listType: string;
 };
 
 const RoutedControls = (props: RoutedControlsProps) => {
@@ -71,7 +79,9 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition > 0 && (
                 <Link
                     className="previous"
-                    to={`${props.movies.results[currentPosition - 1].id}`}
+                    to={`${props.movies.results[currentPosition - 1].id}?list=${
+                        props.listType
+                    }`}
                 >
                     {"<"}
                 </Link>
@@ -79,7 +89,9 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition < props.movies.results.length - 1 && (
                 <Link
                     className="next"
-                    to={`${props.movies.results[currentPosition + 1].id}`}
+                    to={`${props.movies.results[currentPosition + 1].id}?list=${
+                        props.listType
+                    }`}
                 >
                     {">"}
                 </Link>

@@ -11,15 +11,13 @@ import { findObjectPositionInArray } from "./movieListContainer";
 
 const TVContainerLazy = lazy(() => import("./tvContainer"));
 
-type TVContainerProps = {
-    tv: TmdbPopularTV | null;
-};
-
 export const TVListContainer = () => {
     const [response, setResponse] = useState<TmdbPopularTV | null>(null);
 
+    const listType = document.location.search.split("=")[1] || "popular";
+
     useEffect(() => {
-        var url = `${rootUrl}/tv/popular`;
+        var url = `${rootUrl}/tv/${listType}`;
         var req = new Request(url);
         fetch(req)
             .then((response) => response.json())
@@ -35,7 +33,12 @@ export const TVListContainer = () => {
     }, []);
 
     if (!response) return null;
-    return <TVList tv={response} />;
+    return <TVList tv={response} listType={listType} />;
+};
+
+type TVContainerProps = {
+    tv: TmdbPopularTV | null;
+    listType: string;
 };
 
 export const TVList = (props: TVContainerProps) => {
@@ -46,7 +49,7 @@ export const TVList = (props: TVContainerProps) => {
     if (currentPos === -1) return <Fallback id={id} />;
     return (
         <div className="main">
-            <RoutedControls id={id} tv={props.tv} />
+            <RoutedControls id={id} tv={props.tv} listType={props.listType} />
             <Suspense fallback={<p>Loading...</p>}>
                 <TVContainerLazy
                     poster_path={item.poster_path}
@@ -61,6 +64,7 @@ export const TVList = (props: TVContainerProps) => {
 type RoutedControlsProps = {
     id: string;
     tv: TmdbPopularTV;
+    listType: string;
 };
 
 const RoutedControls = (props: RoutedControlsProps) => {
@@ -73,7 +77,9 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition > 0 && (
                 <Link
                     className="previous"
-                    to={`${props.tv.results[currentPosition - 1].id}`}
+                    to={`${props.tv.results[currentPosition - 1].id}?list=${
+                        props.listType
+                    }`}
                 >
                     {"<"}
                 </Link>
@@ -81,7 +87,9 @@ const RoutedControls = (props: RoutedControlsProps) => {
             {currentPosition < props.tv.results.length - 1 && (
                 <Link
                     className="next"
-                    to={`${props.tv.results[currentPosition + 1].id}`}
+                    to={`${props.tv.results[currentPosition + 1].id}?list=${
+                        props.listType
+                    }`}
                 >
                     {">"}
                 </Link>
