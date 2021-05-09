@@ -1,11 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { TmdbActorDetail } from "../types";
 import { imageGlobalProps } from "./env";
 import { ImageOpti } from "./imageOpti";
 import { formatDate, getFullImagePath } from "./movie";
 
 import "./movie.scss";
+import "./app.scss";
 
+const ActorDetailKnownForLazy = lazy(() => import("./actorDetailKnownFor"));
 interface ActorDetailProps {
     actor: TmdbActorDetail | null;
 }
@@ -14,7 +16,7 @@ export const ActorDetail = (props: ActorDetailProps) => {
     if (!props.actor) return null;
     const image = props.actor.profile_path || "";
     return (
-        <>
+        <div className="main">
             <div
                 className={"subContainer"}
                 style={{
@@ -88,7 +90,13 @@ export const ActorDetail = (props: ActorDetailProps) => {
                         <p className="plot">{props.actor.biography}</p>
                     </div>
                 </div>
+                {/* <ActorDetailGallery/> */}
+                {props.actor.id && (
+                    <Suspense fallback={<p>Loading...</p>}>
+                        <ActorDetailKnownForLazy id={props.actor.id} />
+                    </Suspense>
+                )}
             </div>
-        </>
+        </div>
     );
 };
