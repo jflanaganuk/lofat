@@ -11,6 +11,7 @@ import { NotFound } from "./404";
 import { TVListContainer } from "./tvListContainer";
 import { Lists } from "./lists";
 import { Settings } from "./settings";
+import { ActorDetailContainer } from "./actorDetailContainer";
 
 const App = () => {
     return (
@@ -31,6 +32,9 @@ const App = () => {
                 </Route>
                 <Route path="/tv/:id">
                     <TVListContainer />
+                </Route>
+                <Route path="/actor/:id">
+                    <ActorDetailContainer />
                 </Route>
                 <Route exact path="/lists">
                     <Lists />

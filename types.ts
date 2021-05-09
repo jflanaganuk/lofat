@@ -233,7 +233,7 @@ export type TmdbMovieCast = {
 
 export type TmdbMultiSearchResults = {
     page: number;
-    results: (TmdbMovieSearchResult | TmdbTVSearchResult)[];
+    results: (TmdbMovieSearchResult | TmdbTVSearchResult | TmdbPersonSearchResult)[];
     total_results: number;
     total_pages: number;
     status_message?: string;
@@ -255,6 +255,7 @@ export type TmdbMovieSearchResult = {
     video: boolean;
     vote_average: boolean;
     media_type: string;
+    known_for_department: string | null;
 }
 
 export type TmdbTVSearchResult = {
@@ -272,6 +273,19 @@ export type TmdbTVSearchResult = {
     name: string;
     original_name: string;
     media_type: string;
+    known_for_department: string | null;
+}
+
+export type TmdbPersonSearchResult = {
+    profile_path: string | null;
+    popularity: number;
+    id: number;
+    adult: boolean;
+    gender: number;
+    known_for: (TmdbMovieDetail | TmdbTVDetail)[];
+    known_for_department: string | null;
+    media_type: string;
+    name: string;
 }
 
 export type TmdbPopularTV = {
@@ -376,4 +390,50 @@ export type TmdbTVDetail = {
     vote_average: number;
     vote_count: number;
     status_message?: string;
+}
+
+export type TmdbActorDetail = {
+    adult: boolean;
+    birthday: string | null;
+    known_for_department: string;
+    deathday: string | null;
+    id: number;
+    name: string;
+    also_known_as: string[];
+    gender: number;
+    biography: string;
+    popularity: number;
+    place_of_birth: string | null;
+    profile_path: string | null;
+    imdb_id: string;
+    homepage: string | null;
+    status_message?: string;
+}
+
+export type TmdbActorCredits = {
+    id: number;
+    cast: {
+        id: number;
+        original_language: string;
+        episode_count: number;
+        overview: string;
+        origin_country: string[];
+        original_name: string;
+        genre_ids: number[];
+        name: string;
+        media_type: string;
+        poster_path: string | null;
+        first_air_date: string;
+        vote_average: number;
+        vote_count: number;
+        character: string;
+        backdrop_path: string | null;
+        popularity: number;
+        credit_id: string;
+        original_title: string;
+        video: boolean;
+        release_date: string;
+        title: string;
+        adult: boolean;
+    }[];
 }

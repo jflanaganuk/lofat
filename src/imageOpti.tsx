@@ -8,6 +8,7 @@ type ImageOptiProps = {
     id: string | number | null;
     title: string;
     loadingImg?: string;
+    kind: "title" | "name";
 };
 
 export const ImageOpti = (props: ImageOptiProps) => {
@@ -22,7 +23,11 @@ export const ImageOpti = (props: ImageOptiProps) => {
     }, [loaded]);
     return (
         <a
-            href={props.id ? `https://www.imdb.com/title/${props.id}` : "#"}
+            href={
+                props.id
+                    ? `https://www.imdb.com/${props.kind}/${props.id}`
+                    : "#"
+            }
             target="_blank"
             rel="noopener"
             className={`movieLink ${loaded && "fadeIn"}`}
