@@ -1,8 +1,11 @@
-- Add swipe gestures to navigate
 - Investigate extra stuff we can do now we have migrated to tmdb!!
     - actor pages etc.
 
 - Add lists
+    - lists need to be made in a different way  (seperate component to fetch)
+        - add the list as a query param?
+    - this should then allow easy additions of other list types
+    - tidy up proper list page
 
 - Revisit Settings (change to api key method?)
 
