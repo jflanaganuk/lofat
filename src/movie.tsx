@@ -113,7 +113,7 @@ export const Movie = (
                         <ActorListLazy id={props.movie.id} kind="movie" />
                     </Suspense>
                 )}
-                <RadarrIntegration movie={props.movie} />
+                <RadarrIntegration name={props.movie.title} kind="movie" />
             </div>
         </>
     );

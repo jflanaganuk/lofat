@@ -10,6 +10,7 @@ import { GithubLink } from "./githubLink";
 import { NotFound } from "./404";
 import { TVListContainer } from "./tvListContainer";
 import { Lists } from "./lists";
+import { Settings } from "./settings";
 
 const App = () => {
     return (
@@ -33,6 +34,9 @@ const App = () => {
                 </Route>
                 <Route exact path="/lists">
                     <Lists />
+                </Route>
+                <Route exact path="/settings">
+                    <Settings />
                 </Route>
                 <Route exact path="/index.html">
                     <Home />
