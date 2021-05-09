@@ -46,6 +46,7 @@ export const TV = (
                         )}
                         id={null}
                         title={props.tv.name}
+                        kind="title"
                     />
                     <div className="vertical">
                         <table>

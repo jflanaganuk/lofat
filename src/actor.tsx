@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { TmdbMovieCast } from "../types";
 
 import "./actor.scss";
@@ -16,11 +17,7 @@ export const Actor = (props: TmdbMovieCast & { offset: number }) => {
     const image = props.profile_path || noImgUrl;
     return (
         <div className="actorContainer">
-            <a
-                href={`https://www.themoviedb.org/person/${props.id}`}
-                target="_blank"
-                rel="noopener"
-            >
+            <Link to={`/actor/${props.id}`}>
                 <div
                     className="actorImageCircle"
                     style={{
@@ -42,7 +39,7 @@ export const Actor = (props: TmdbMovieCast & { offset: number }) => {
                 >
                     {props.name}
                 </div>
-            </a>
+            </Link>
             <b>{props.name ? props.name : "Unknown"}</b>
             <p>{props.character ? props.character : "Unnamed"}</p>
         </div>

@@ -1,7 +1,8 @@
-- Investigate extra stuff we can do now we have migrated to tmdb!!
-    - actor pages etc.
 
-- Revisit Settings (change to api key method?)
+- Expand out actor page
+    - Known for
+        - type already made
+    - gallery
 
 - Desktop CSS needs reworking, add a limiter to horizontal width and increase content on page (so scrolling returns)
     - Left and right arrows seem odd on desktop currently
