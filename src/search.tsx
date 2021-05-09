@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
     TmdbMovieSearchResult,
     TmdbTVSearchResult,
+    TmdbPersonSearchResult,
     TmdbMultiSearchResults,
 } from "../types";
 import { imageGlobalProps, rootUrl } from "./env";
@@ -15,6 +16,8 @@ import "./search.scss";
 import TVSvg from "./tv.svg";
 // @ts-ignore
 import MovieSvg from "./film.svg";
+// @ts-ignore
+import PersonSvg from "./person.svg";
 
 enum Status {
     Idle = "Idle",
@@ -106,6 +109,16 @@ export const Search = (props: SearchProps) => {
                                     result={result as TmdbTVSearchResult}
                                 />
                             );
+                        if (
+                            result.media_type === "person" &&
+                            result.known_for_department === "Acting" &&
+                            result.popularity > 1
+                        )
+                            return (
+                                <SearchResultPerson
+                                    result={result as TmdbPersonSearchResult}
+                                />
+                            );
                     })}
                 </div>
             )}
@@ -181,6 +194,38 @@ const SearchResultTV = (props: { result: TmdbTVSearchResult }) => {
                     <p>{result.overview.substring(0, 55)}...</p>
                 )}
                 {result.overview.length <= 60 && <p>{result.overview}</p>}
+            </div>
+        </Link>
+    );
+};
+
+const SearchResultPerson = (props: { result: TmdbPersonSearchResult }) => {
+    const { result } = props;
+    return (
+        <Link
+            key={result.id}
+            className="searchResult"
+            to={`/actor/${result.id}`}
+        >
+            {result.profile_path && (
+                <img
+                    src={getFullImagePath(
+                        result.profile_path || "",
+                        imageGlobalProps.poster_sizes[0]
+                    )}
+                    alt={`poster of ${result.name}`}
+                />
+            )}
+            {!result.profile_path && (
+                <img src={fallbackUrl} alt="no image found" />
+            )}
+            <div className="searchResultVertical">
+                {result.name.length > 15 && (
+                    <h2>{result.name.substring(0, 10)}...</h2>
+                )}
+                {result.name.length <= 15 && <h2>{result.name}</h2>}
+                <PersonSvg className="tvSvg" />
+                <p>{result.gender === 2 ? "Male" : "Female"}</p>
             </div>
         </Link>
     );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./menu.scss";
-export const Settings = (props) => {
+export const Settings = () => {
     const [urlInputRadarr, setUrlInputRadarr] = useState(
         localStorage.getItem("radarrUrl") || ""
     );

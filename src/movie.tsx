@@ -46,6 +46,7 @@ export const Movie = (
                         )}
                         id={props.movie.imdb_id}
                         title={props.movie.title}
+                        kind="title"
                     />
                     <div className="vertical">
                         <table>
