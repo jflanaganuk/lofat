@@ -58,11 +58,15 @@ export const Menu = () => {
 };
 
 const RadarrForm = (props) => {
-    const [urlInput, setUrlInput] = useState(
+    const [urlInputRadarr, setUrlInputRadarr] = useState(
         localStorage.getItem("radarrUrl") || ""
     );
+    const [urlInputSonarr, setUrlInputSonarr] = useState(
+        localStorage.getItem("sonarrUrl") || ""
+    );
     const submitForm = () => {
-        localStorage.setItem("radarrUrl", urlInput);
+        localStorage.setItem("radarrUrl", urlInputRadarr);
+        localStorage.setItem("sonarrUrl", urlInputSonarr);
         props.setShown(false);
         window.location.reload();
     };
@@ -83,9 +87,24 @@ const RadarrForm = (props) => {
                 </small>
                 <input
                     placeholder="Radarr Ip Address"
-                    onChange={(e) => setUrlInput(e.target.value)}
-                    value={urlInput}
+                    onChange={(e) => setUrlInputRadarr(e.target.value)}
+                    value={urlInputRadarr}
                 />
+                <p>
+                    Enter your <b>sonarr</b> LAN network address here
+                </p>
+                <small>
+                    Example: the full url: "https://192.168.0.1:12345" would be
+                    entered as "192.168.0.1:12345"
+                </small>
+                <input
+                    placeholder="Sonarr Ip Address"
+                    onChange={(e) => setUrlInputSonarr(e.target.value)}
+                    value={urlInputSonarr}
+                />
+                <small>
+                    Note: Only works on sonarr/radarr versions 3 and above
+                </small>
                 <button onClick={() => submitForm()}>Submit</button>
                 <button onClick={() => resetForm()}>Reset</button>
             </div>

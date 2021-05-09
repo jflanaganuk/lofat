@@ -6,6 +6,7 @@ import { formatDate, getFullImagePath, getRealPicture } from "./movie";
 import { TrailerContainer } from "./trailerContainer";
 
 import "./movie.scss";
+import { RadarrIntegration } from "./radarrIntegration";
 
 const ActorListLazy = lazy(() => import("./actorListContainer"));
 
@@ -109,6 +110,7 @@ export const TV = (
                         <ActorListLazy id={props.tv.id} kind="tv" />
                     </Suspense>
                 )}
+                <RadarrIntegration name={props.tv.name} kind="tv" />
             </div>
         </>
     );
