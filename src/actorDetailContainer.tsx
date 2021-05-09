@@ -24,5 +24,6 @@ export const ActorDetailContainer = () => {
             .catch((e) => console.error(e));
     }, [id]);
 
+    if (!response) return null;
     return <ActorDetail actor={response} />;
 };
