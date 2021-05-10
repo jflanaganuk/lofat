@@ -1,7 +1,5 @@
 
 - Expand out actor page
-    - Known for
-        - type already made
     - gallery
 
 - Desktop CSS needs reworking, add a limiter to horizontal width and increase content on page (so scrolling returns)
