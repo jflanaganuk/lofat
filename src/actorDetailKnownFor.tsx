@@ -109,6 +109,14 @@ const ActorDetailKnownFor = (props: { entities: TmdbActorCredits | null }) => {
             >
                 {props.entities &&
                     props.entities.cast
+                        .filter((credit) => {
+                            if (
+                                credit.genre_ids.includes(10763) ||
+                                credit.genre_ids.includes(10767)
+                            )
+                                return false;
+                            return true;
+                        })
                         .sort((a, b) => {
                             return b.popularity - a.popularity;
                         })
