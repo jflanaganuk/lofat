@@ -48,7 +48,6 @@ export const ActorListContainerResponse = (
         props.actors.results,
         actualId
     );
-    const item = props.actors.results[currentPos];
     if (currentPos === -1) return <Fallback id={actualId} />;
     return (
         <div className="main">
