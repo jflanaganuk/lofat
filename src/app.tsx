@@ -11,7 +11,6 @@ import { NotFound } from "./404";
 import { TVListContainer } from "./tvListContainer";
 import { Lists } from "./lists";
 import { Settings } from "./settings";
-import { ActorDetailContainer } from "./actorDetailContainer";
 import { ActorPopularListContainer } from "./actorPopularListContainer";
 
 const App = () => {
