@@ -16,7 +16,7 @@ export const ActorDetail = (props: ActorDetailProps) => {
     if (!props.actor) return null;
     const image = props.actor.profile_path || "";
     return (
-        <div className="main">
+        <>
             <div
                 className={"subContainer"}
                 style={{
@@ -97,6 +97,6 @@ export const ActorDetail = (props: ActorDetailProps) => {
                     </Suspense>
                 )}
             </div>
-        </div>
+        </>
     );
 };

@@ -392,6 +392,14 @@ export type TmdbTVDetail = {
     status_message?: string;
 }
 
+export type TmdbPopularActors = {
+    page: number;
+    results: TmdbActorDetail[];
+    total_pages: number;
+    total_results: number;
+    status_message?: string;
+}
+
 export type TmdbActorDetail = {
     adult: boolean;
     birthday: string | null;
