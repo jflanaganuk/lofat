@@ -4,12 +4,13 @@ import { TmdbActorDetail } from "../types";
 import { ActorDetail } from "./actorDetail";
 import { rootUrl } from "./env";
 
-export const ActorDetailContainer = () => {
-    const { id } = useParams<{ id: string }>() || { id: "" };
+export const ActorDetailContainer = (props: { id?: string | number }) => {
+    const { id } = useParams<{ id: string }>();
+    const actualId = id ? id : props.id || "";
     const [response, setResponse] = useState<TmdbActorDetail | null>(null);
 
     useEffect(() => {
-        const url = `${rootUrl}/person/${id}`;
+        const url = `${rootUrl}/person/${actualId}`;
         const req = new Request(url);
         fetch(req)
             .then((response) => response.json())
@@ -22,8 +23,10 @@ export const ActorDetailContainer = () => {
                 }
             })
             .catch((e) => console.error(e));
-    }, [id]);
+    }, [actualId]);
 
     if (!response) return null;
     return <ActorDetail actor={response} />;
 };
+
+export default ActorDetailContainer;
