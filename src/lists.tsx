@@ -26,7 +26,7 @@ export const Lists = () => {
                 </div>
                 <div className="listInnerSection">
                     <h2>Actors</h2>
-                    <Link to="/actors/">Popular Actors</Link>
+                    <Link to="/actor/">Popular Actors</Link>
                 </div>
             </div>
         </div>

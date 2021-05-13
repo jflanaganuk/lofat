@@ -11,7 +11,7 @@ import { NotFound } from "./404";
 import { TVListContainer } from "./tvListContainer";
 import { Lists } from "./lists";
 import { Settings } from "./settings";
-import { ActorDetailContainer } from "./actorDetailContainer";
+import { ActorPopularListContainer } from "./actorPopularListContainer";
 
 const App = () => {
     return (
@@ -27,6 +27,9 @@ const App = () => {
                 <Route exact path="/tv">
                     <TVListContainer />
                 </Route>
+                <Route exact path="/actor">
+                    <ActorPopularListContainer />
+                </Route>
                 <Route path="/movie/:id">
                     <MovieListContainer />
                 </Route>
@@ -34,7 +37,7 @@ const App = () => {
                     <TVListContainer />
                 </Route>
                 <Route path="/actor/:id">
-                    <ActorDetailContainer />
+                    <ActorPopularListContainer />
                 </Route>
                 <Route exact path="/lists">
                     <Lists />
