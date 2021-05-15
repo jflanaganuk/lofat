@@ -19,7 +19,9 @@ const App = () => {
             <Menu />
             <Switch>
                 <Route exact path="/search">
-                    <Search />
+                    <div className="searchHomeContainer">
+                        <Search />
+                    </div>
                 </Route>
                 <Route exact path="/movie">
                     <MovieListContainer />

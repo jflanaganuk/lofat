@@ -27,6 +27,7 @@ enum Status {
 }
 
 interface SearchProps {
+    title?: string;
     hideTitle?: boolean;
 }
 
@@ -76,7 +77,6 @@ export const Search = (props: SearchProps) => {
     return (
         <form className="searchContainer" onSubmit={submitForm}>
             <div className="searchSticky">
-                {!props.hideTitle && <h2>Search</h2>}
                 <input
                     type="text"
                     name="searchInput"
@@ -92,6 +92,12 @@ export const Search = (props: SearchProps) => {
                     defaultValue={sanitiseVal(val)}
                     autoFocus={true}
                 />
+                {!props.hideTitle && (
+                    <label htmlFor="searchInput">
+                        {props.title ||
+                            "Search Films, TV Shows or Actors/Actresses"}
+                    </label>
+                )}
             </div>
             {status === Status.Pending && <p>Loading...</p>}
             {results && (

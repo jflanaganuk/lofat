@@ -8,12 +8,12 @@ export const Home = () => {
         <div className="homeContainer">
             <img
                 className="homeLogo"
-                src="./images/lofat_logo.png"
+                src="./images/lofat_logo.svg"
                 alt="lofat logo image"
             />
             <h2 className="homeSub">List Of Films And TV</h2>
             <div className="homeSearch">
-                <Search hideTitle={true} />
+                <Search />
             </div>
         </div>
     );
