@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none" x="0px" y="0px" viewBox="60 60 280 280" >
+<defs>
+<path id="Symbol_1_0_Layer0_0_1_STROKES" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d=" M 0 30.45 L 262 30.45 262 -18.45 0 -18.45 0 30.45 Z"/>
+
+<path id="Symbol_2_0_Layer0_0_1_STROKES" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d=" M 0 0 L 262 0 262 147.7 Q 261.8 155.6 256.2 161.15 250.65 166.75 242.75 166.95 L 19.25 166.95 Q 11.35 166.75 5.75 161.15 0.2 155.6 0 147.7 L 0 0 Z"/>
+
+<path id="Symbol_3_0_Layer0_0_1_STROKES" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d=" M 0 0 L 0 46 55.25 46 55.25 20.75 18.5 0 0 0 Z"/>
+
+<path id="Symbol_3_0_Layer0_0_2_STROKES" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" fill="none" d=" M 48.65 38.25 Q 48.65 39.45 47.8 40.3 46.95 41.15 45.75 41.15 44.55 41.15 43.7 40.3 42.85 39.45 42.85 38.25 42.85 37.05 43.7 36.2 44.55 35.35 45.75 35.35 46.95 35.35 47.8 36.2 48.65 37.05 48.65 38.25 Z M 13.55 7.85 Q 13.55 9.05 12.7 9.9 11.85 10.75 10.65 10.75 9.45 10.75 8.6 9.9 7.75 9.05 7.75 7.85 7.75 6.65 8.6 5.8 9.45 4.95 10.65 4.95 11.85 4.95 12.7 5.8 13.55 6.65 13.55 7.85 Z M 13.55 38.25 Q 13.55 39.45 12.7 40.3 11.85 41.15 10.65 41.15 9.45 41.15 8.6 40.3 7.75 39.45 7.75 38.25 7.75 37.05 8.6 36.2 9.45 35.35 10.65 35.35 11.85 35.35 12.7 36.2 13.55 37.05 13.55 38.25 Z"/>
+
+<font horiz-adv-x="2048">
+<!--  Font Name: Verdana Bold
+Vendor ID: MS  
+© 2016 Microsoft Corporation. All Rights Reserved.
+http://www.microsoft.com/typography/fonts/
+URL for more Information: http://www.adobe.com/go/font_vendor_id?ID=MS&Name=Verdana&PSName=Verdana-Bold&applanguage=en_US-->
+<font-face font-family="Verdana_Bold" units-per-em="2048" ascent="2059" descent="430"/>
+
+<glyph unicode="L" horiz-adv-x="1305" d=" M 1264 0 L 190 0 190 1489 574 1489 574 288 1264 288 1264 0 Z"/>
+
+<glyph unicode="O" horiz-adv-x="1741" d=" M 1638 744 Q 1638 388 1434 178 1230 -31 870 -31 511 -31 307 178 103 388 103 744 103 1103 307 1311 511 1520 870 1520 1228 1520 1433 1311 1638 1103 1638 744 Z M 1129 367 Q 1185 435 1212 527 1239 620 1239 745 1239 879 1208 973 1177 1067 1127 1125 1076 1185 1010 1212 943 1239 871 1239 798 1239 734 1213 669 1187 615 1127 565 1071 534 972 502 874 502 744 502 611 533 517 563 424 613 365 663 306 730 278 797 250 871 250 945 250 1012 278 1079 307 1129 367 Z"/>
+
+<glyph unicode="F" horiz-adv-x="1332" d=" M 1257 1201 L 572 1201 572 924 1207 924 1207 636 572 636 572 0 190 0 190 1489 1257 1489 1257 1201 Z"/>
+
+<glyph unicode="A" horiz-adv-x="1590" d=" M 1566 0 L 1169 0 1066 301 515 301 411 0 24 0 574 1489 1016 1489 1566 0 Z M 973 574 L 790 1107 607 574 973 574 Z"/>
+
+<glyph unicode="T" horiz-adv-x="1396" d=" M 1355 1201 L 890 1201 890 0 506 0 506 1201 41 1201 41 1489 1355 1489 1355 1201 Z"/>
+</font>
+</defs>
+
+<g transform="matrix( 1, 0, 0, 1, 66.5,69.4) ">
+<g transform="matrix( 0.9884490966796875, -0.15155029296875, 0.15155029296875, 0.9884490966796875, 2.8,57.95) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Symbol_1_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 5,94.3) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Symbol_2_0_Layer0_0_1_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 10.25,62.75) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#Symbol_3_0_Layer0_0_1_STROKES"/>
+
+<use xlink:href="#Symbol_3_0_Layer0_0_2_STROKES"/>
+</g>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 28.05,141.3) ">
+<clipPath id="Mask_Mask_1">
+<rect x="-2" y="-2" width="219.95" height="76.9" fill="#FFFFFF" stroke="none"/>
+</clipPath>
+
+<text clip-path="url(#Mask_Mask_1)" writing-mode="lr"><tspan x="0" y="60.3" baseline-shift="0%" kerning="auto" font-family="Verdana_Bold" font-weight="bold" font-size="60" fill="#FFFFFF" xml:space="preserve" style="&#10;    font-family: verdana;&#10;">LOFAT</tspan></text>
+</g>
+</g>
+</svg>
