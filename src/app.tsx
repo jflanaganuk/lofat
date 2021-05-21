@@ -15,7 +15,7 @@ import { ActorPopularListContainer } from "./actorPopularListContainer";
 
 const App = () => {
     return (
-        <Router basename="/imdbfetch">
+        <Router basename="/lofat">
             <Menu />
             <Switch>
                 <Route exact path="/search">

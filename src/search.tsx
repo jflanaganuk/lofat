@@ -71,7 +71,7 @@ export const Search = (props: SearchProps) => {
     };
 
     const submitRequest = (val: string) => {
-        document.location.href = `/imdbfetch/search?query=${val}`;
+        document.location.href = `/lofat/search?query=${val}`;
     };
 
     return (
