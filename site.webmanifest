@@ -1,7 +1,7 @@
 {
-  "short_name": "IMDb Fetcher",
-  "name": "IMDb Fetcher - See The Latest Box Office Hits!",
-  "orientation": "any",
+  "short_name": "Lofat",
+  "name": "Lofat - List of films and TV",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon-small-144x144.png",
@@ -24,7 +24,7 @@
         "type": "image/png"
     }
   ],
-  "start_url": "/imdbfetch/",
+  "start_url": "/lofat/",
   "display": "standalone",
   "theme_color": "#ecf0f1",
   "background_color": "#2c3e50"

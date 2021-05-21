@@ -1,7 +1,7 @@
-# IMDb Fetcher
-## Fetches the 10 highest box office films with trailers and info
+# LOFAT
+## List of Films and TV - Powered by The Movie Database
 ### Installable as a PWA
-<a href="https://www.uploadr.co.uk/imdbfetch/" target="_blank" rel="noopener">
+<a href="https://www.uploadr.co.uk/lofat/" target="_blank" rel="noopener">
 Click for a live example!
 </a>
 <br>
@@ -58,7 +58,7 @@ The following URLs helped to solve this issue:
 
 [Knowing which .conf file to edit](http://smartwebdeveloper.com/ubuntu/httpd-conf-location-on-ubuntu)
 
-Thanks to this the following link should take you to the film ["nobody"](https://www.uploadr.co.uk/imdbfetch/tt7888964)
+Thanks to this the following link should take you to the film ["nobody"](https://www.uploadr.co.uk/lofat/tt7888964)
 
 # Apache CORS Settings
 

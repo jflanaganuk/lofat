@@ -8,7 +8,7 @@ export const GithubLink = () => {
             <p>
                 View the source code{" "}
                 <a
-                    href="https://github.com/jflanaganuk/imdbfetch"
+                    href="https://github.com/jflanaganuk/lofat"
                     target="_blank"
                     rel="noopener"
                 >
