@@ -1,5 +1,5 @@
-# IMDb Fetcher
-## Fetches the 10 highest box office films with trailers and info
+# LOFAT
+## List of Films and TV - Powered by The Movie Database
 ### Installable as a PWA
 <a href="https://www.uploadr.co.uk/lofat/" target="_blank" rel="noopener">
 Click for a live example!
