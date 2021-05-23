@@ -75,12 +75,17 @@ export const Search = (props: SearchProps) => {
     };
 
     return (
-        <form className="searchContainer" onSubmit={submitForm}>
+        <form
+            className="searchContainer"
+            onSubmit={submitForm}
+            autoComplete="off"
+        >
             <div className="searchSticky">
                 <input
                     type="text"
                     name="searchInput"
                     id="searchInput"
+                    autoComplete="off"
                     onBlur={(e) => {
                         if (
                             e.target.value !== sanitiseVal(val) &&
