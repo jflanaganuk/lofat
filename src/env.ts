@@ -3,7 +3,8 @@
  */
 
 // export const rootUrl = "http://localhost:4000/api/3";
-export const rootUrl = "https://www.uploadr.co.uk/ext/api/3";
+// export const rootUrl = "https://www.uploadr.co.uk/ext/api/3";
+export const rootUrl = "https://www.joshdev.io/ext/api/3";
 
 export const imageGlobalProps: ImageGlobalPropsType = {
     base_url: "http://image.tmdb.org/t/p/",
